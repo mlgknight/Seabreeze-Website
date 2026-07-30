@@ -1,126 +1,133 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
 const Footer = () => {
-    const year = new Date().getFullYear();
+	const year = new Date().getFullYear();
 
-    return (
-        <footer className='w-full border-2 border-card'>
+	return (
+		<footer className='relative z-20 w-full bg-secondary text-secondary-foreground border-t border-secondary-foreground/20 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]'>
+			{/* Main Footer Container */}
+			<div className='w-full px-6 md:px-12 lg:px-16 py-16 lg:py-20'>
+				<div className='max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12 lg:gap-16'>
+					{/* Left: Brand / Logo Column */}
+					<div className='flex flex-col gap-6 lg:w-2/5'>
+						<Link href='/' className='flex items-center gap-4 group w-fit'>
+							<Image
+								src='/Seabreeze_Strategies_Logo/no_background2.png'
+								alt='Seabreeze Strategies Logo'
+								width={120}
+								height={120}
+								className='w-14 h-14 md:w-20 md:h-20 drop-shadow-md transition-transform duration-500 group-hover:scale-105'
+								priority
+							/>
+							<span className='font-oldstandard text-2xl md:text-3xl font-bold leading-none tracking-tight text-secondary-foreground'>
+								Seabreeze
+								<br />
+								<span className='font-light italic text-xl md:text-2xl opacity-90'>
+									Strategies
+								</span>
+							</span>
+						</Link>
 
-            {/* Main footer content */}
-            <div className='w-full bg-secondary text-secondary-foreground px-10 py-12'>
-                <div className='max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-12'>
+						<p className='text-sm md:text-base opacity-80 leading-relaxed max-w-sm font-light tracking-wide'>
+							Guiding brands through the digital landscape with intentional
+							storytelling and effortless coastal grace.
+						</p>
 
-                    {/* Brand column */}
-                    <div className='flex flex-col gap-3 md:w-1/3'>
-                        <div className='flex items-center gap-3'>
-                            <Image
-                                src='/Seabreeze_Strategies_Logo/no_background2.png'
-                                alt='Logo' 
-                                width={500}
-                                height={500}
-                                className='w-40 h-40 drop-shadow-lg shrink-0'
-                                priority
-                            />
-                            <span className='text-lg font-semibold leading-tight'>
-                                Seabreeze<br />Strategies
-                            </span>
-                        </div>
-                        <p className='text-sm opacity-70 leading-relaxed max-w-xs'>
-                            Guiding businesses through the digits, one connection at a time.
-                        </p>
-                    </div>
+						<div className='text-xs font-mono tracking-widest uppercase opacity-60 mt-2'>
+							Est. 2026 — Based in Wilmington, NC
+						</div>
+					</div>
 
-                    {/* Right side: Nav + Contact */}
-                    <div className='flex flex-col md:flex-row gap-16 md:w-2/3 justify-end'>
+					{/* Right: Navigation + Contact Columns */}
+					<div className='grid grid-cols-1 sm:grid-cols-2 gap-10 lg:w-3/5 lg:justify-items-end'>
+						{/* Navigation Column */}
+						<div className='flex flex-col gap-4'>
+							<h3 className='text-xs font-semibold uppercase tracking-[0.3em] opacity-60 text-secondary-foreground'>
+								Navigation
+							</h3>
+							<nav className='flex flex-col gap-2.5'>
+								{[
+									{ label: 'Home', href: '/' },
+									{ label: 'About', href: '/about' },
+									{ label: 'Services', href: '/services' },
+									{ label: 'Inquire', href: '/inquire' },
+									{ label: 'FAQ', href: '/faq' },
+								].map(({ label, href }) => (
+									<Link
+										key={label}
+										href={href}
+										className='text-sm opacity-80 hover:opacity-100 hover:translate-x-1 transition-all duration-300 w-fit'
+									>
+										{label}
+									</Link>
+								))}
+							</nav>
+						</div>
 
-                        {/* Nav column */}
-                        <section className='flex flex-col gap-3'>
-                            <h3 className='text-sm font-semibold uppercase tracking-widest opacity-60'>
-                                Navigation
-                            </h3>
-                            <nav className='flex flex-col gap-2'>
-                                {[
-                                    { label: 'Home', href: '/' },
-                                    { label: 'About', href: '/about' },
-                                    { label: 'Services', href: '/services' },
-                                    { label: 'Portfolio', href: '/portfolio' },
-                                    { label: 'Blog', href: '/blog' },
-                                ].map(({ label, href }) => (
-                                    <Link
-                                        key={label}
-                                        href={href}
-                                        className='text-sm opacity-80 hover:opacity-100 transition-opacity duration-200'
-                                    >
-                                        {label}
-                                    </Link>
-                                ))}
-                            </nav>
-                        </section>
+						{/* Contact & Social Column */}
+						<div className='flex flex-col gap-4'>
+							<h3 className='text-xs font-semibold uppercase tracking-[0.3em] opacity-60 text-secondary-foreground'>
+								Connect
+							</h3>
+							<div className='flex flex-col gap-2.5 text-sm'>
+								<a
+									href='mailto:hello@seabreezestrategies.com'
+									className='opacity-80 hover:opacity-100 hover:translate-x-1 transition-all duration-300 w-fit'
+								>
+									hello@seabreezestrategies.com
+								</a>
 
-                        {/* Contact column */}
-                        <section className='flex flex-col gap-3'>
-                            <h3 className='text-sm font-semibold uppercase tracking-widest opacity-60'>
-                                Contact
-                            </h3>
-                            <div className='flex flex-col gap-2 text-sm'>
-                                <a
-                                    href='mailto:hello@seabreezestrategies.com'
-                                    className='opacity-80 hover:opacity-100 transition-opacity duration-200'
-                                >
-                                    hello@seabreezestrategies.com
-                                </a>
+								<a
+									href='tel:+13213399807'
+									className='opacity-80 hover:opacity-100 hover:translate-x-1 transition-all duration-300 w-fit'
+								>
+									(321) 339-9807
+								</a>
 
-                                <a
-                                    href='tel:+19105550123'
-                                    className='opacity-80 hover:opacity-100 transition-opacity duration-200'
-                                >
-                                    (321) 339-9807
-                                </a>
+								<p className='opacity-60 leading-relaxed font-light'>
+									Wilmington, North Carolina
+								</p>
+							</div>
 
-                                <p className='opacity-60 leading-relaxed'>
-                                    Wilmington, NC
-                                </p>
-                            </div>
+							{/* Social Badges */}
+							<div className='flex items-center gap-4 mt-3 pt-3 border-t border-secondary-foreground/15'>
+								{[
+									{ label: 'Instagram', href: 'https://instagram.com' },
+									{ label: 'LinkedIn', href: 'https://linkedin.com' },
+									{ label: 'Facebook', href: 'https://facebook.com' },
+								].map(({ label, href }) => (
+									<a
+										key={label}
+										href={href}
+										target='_blank'
+										rel='noopener noreferrer'
+										className='text-xs font-medium uppercase tracking-widest opacity-60 hover:opacity-100 hover:underline underline-offset-4 transition-all duration-200'
+									>
+										{label}
+									</a>
+								))}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-                            {/* Social links */}
-                            <div className='flex gap-4 mt-1'>
-                                {[
-                                    { label: 'LinkedIn', href: 'https://linkedin.com' },
-                                    { label: 'Instagram', href: 'https://instagram.com' },
-                                    { label: 'Facebook', href: 'https://facebook.com' },
-                                ].map(({ label, href }) => (
-                                    <a
-                                        key={label}
-                                        href={href}
-                                        target='_blank'
-                                        rel='noopener noreferrer'
-                                        className='text-xs font-medium uppercase tracking-wide opacity-60 hover:opacity-100 transition-opacity duration-200'
-                                    >
-                                        {label}
-                                    </a>
-                                ))}
-                            </div>
-                        </section>
-
-                    </div>
-                </div>
-            </div>
-
-            {/* Bottom bar */}
-            <div className='w-full bg-primary text-primary-foreground px-10 py-4'>
-                <div className='max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-1'>
-                    <p className='text-sm font-oldstandard'>
-                        © {year} Seabreeze Strategies
-                    </p>
-                    <p className='text-xs font-light opacity-70'>
-                        Crafting digital success, one wave at a time.
-                    </p>
-                </div>
-            </div>
-
-        </footer>
-    );
+			{/* Bottom Bar */}
+			<div className='w-full bg-primary text-primary-foreground px-6 md:px-12 py-5 border-t border-primary-foreground/10'>
+				<div className='max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left'>
+					<p className='text-sm font-oldstandard tracking-wide'>
+						© {year} Seabreeze Strategies. All rights reserved.
+					</p>
+					<p className='text-xs font-light tracking-widest uppercase opacity-80'>
+						Crafting digital success, one wave at a time.
+					</p>
+				</div>
+			</div>
+		</footer>
+	);
 };
 
 export default Footer;

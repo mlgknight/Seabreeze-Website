@@ -2,106 +2,105 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import {
+    Sheet,
+    SheetContent,
+    SheetTitle,
+    SheetTrigger,
+} from '@/components/ui/sheet';
 
-const navItems = ['About', 'Services', 'Inquire', 'FAQ'];
+const navItems = ['About', 'Services', 'Inquire'];
 
 export default function Navigation() {
-	const [open, setOpen] = useState(false);
+    const pathname = usePathname();
+    const [open, setOpen] = useState(false);
 
-	// Split items for the desktop layout: 2 on left, 2 on right
-	const leftNav = navItems.slice(0, 2);
-	const rightNav = navItems.slice(2, 4);
+    return (
+        /* Nav height is strictly controlled by h-16 or h-20 */
+        <nav className="fixed top-0 left-0 z-50 w-full h-16 md:h-29 bg-[#F9F7F2]/80 backdrop-blur-md border-b border-[#2A2A2A]/5 transition-all duration-300">
+            <div className="w-full h-full mx-auto px-6 lg:px-12 flex items-center justify-between">
+                {/* Far Left: Main Logo Wrapper */}
+                <Link href="/" aria-label="Home" className="relative flex items-center shrink-0 h-full w-48 md:w-64">
+                    <Image
+                        src="/Seabreeze_Strategies_Logo/no_background.png"
+                        alt="Seabreeze Logo"
+                        width={400}
+                        height={200}
+                        /* Absolute positioning allows the image to overflow the header without expanding it */
+                        className="absolute left-0 top-1/2 -translate-y-1/2 cursor-pointer brightness-1 opacity-90 w-auto h-20 md:h-32 lg:h-44 max-w-none object-contain"
+                        priority
+                    />
+                </Link>
 
-	return (
-		<nav className='fixed flex top-0 left-0 w-full h-25 z-[100] bg-[#F9F7F2]/80 backdrop-blur-md border-b border-[#2A2A2A]/5 py-6 md:py-10 transition-all duration-300'>
-			<div className='max-w-7xl mx-auto px-6 flex items-center justify-between md:justify-center'>
-				{/* Mobile Brand Label (Only visible on small screens) */}
-				<div className='md:hidden text-4xl tracking-[0.4em] font-bold uppercase'>
-					Seabreeze
-				</div>
+                {/* Far Right: Mobile Header Toggle */}
+                <div className="md:hidden flex items-center justify-end">
+                    <Sheet open={open} onOpenChange={setOpen}>
+                        <SheetTrigger asChild>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                className="hover:bg-transparent -mr-2"
+                                aria-label="Toggle menu"
+                            >
+                                <Menu className="h-6 w-6 stroke-[1.5px]" />
+                            </Button>
+                        </SheetTrigger>
+                        <SheetContent
+                            side="top"
+                            className="w-full h-full bg-[#F9F7F2] border-none pt-24"
+                        >
+                            <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                            <nav className="flex flex-col items-center gap-10">
+                                <Link href="/" aria-label="Home" onClick={() => setOpen(false)}>
+                                    <Image
+                                        src="/Seabreeze_Strategies_Logo/no_background2.png"
+                                        alt="Logo"
+                                        width={100}
+                                        height={100}
+                                        className="grayscale brightness-0 mb-8"
+                                    />
+                                </Link>
+                                {navItems.map((item) => (
+                                    <Link
+                                        key={item}
+                                        href={`/${item.toLowerCase()}`}
+                                        onClick={() => setOpen(false)}
+                                        className="text-3xl uppercase tracking-[0.4em] font-bold font-sans text-stone-600 hover:text-black transition-all"
+                                    >
+                                        {item}
+                                    </Link>
+                                ))}
+                            </nav>
+                        </SheetContent>
+                    </Sheet>
+                </div>
 
-				{/* Desktop Centered Menu */}
-				<div className='hidden md:flex items-center gap-12 lg:gap-16'>
-					{/* Left Side Links */}
-					<div className='flex gap-8 lg:gap-12'>
-						{leftNav.map((item) => (
-							<a
-								key={item}
-								href={`#${item.toLowerCase()}`}
-								className='text-md tracking-[0.4em] uppercase font-bold text-stone-600 hover:text-black hover:italic transition-all'
-							>
-								{item}
-							</a>
-						))}
-					</div>
-
-					{/* Centered Logo */}
-					<div className='px-4'>
-						<Image
-							src='/Seabreeze_Strategies_Logo/no_background2.png'
-							alt='Seabreeze Logo'
-							width={45}
-							height={45}
-							className=' w-20 grayscale brightness-0 opacity-90'
-							priority
-						/>
-					</div>
-
-					{/* Right Side Links */}
-					<div className='flex gap-8 lg:gap-12'>
-						{rightNav.map((item) => (
-							<a
-								key={item}
-								href={`#${item.toLowerCase()}`}
-								className='text-md tracking-[0.4em] uppercase font-bold text-stone-600 hover:text-black hover:italic transition-all'
-							>
-								{item}
-							</a>
-						))}
-					</div>
-				</div>
-
-				{/* Mobile Menu Trigger */}
-				<Sheet open={open} onOpenChange={setOpen}>
-					<SheetTrigger asChild className='md:hidden'>
-						<Button
-							variant='ghost'
-							size='icon'
-							className='hover:bg-transparent'
-						>
-							<Menu className='h-5 w-5 stroke-[1.5px]' />
-							<span className='sr-only'>Toggle menu</span>
-						</Button>
-					</SheetTrigger>
-					<SheetContent
-						side='top'
-						className='w-full h-full bg-[#F9F7F2] border-none pt-24'
-					>
-						<nav className=' flex flex-col items-center gap-10'>
-							<Image
-								src='/Seabreeze_Strategies_Logo/no_background2.png'
-								alt='Logo'
-								width={100}
-								height={100}
-								className='grayscale brightness-0 mb-8'
-							/>
-							{navItems.map((item) => (
-								<a
-									key={item}
-									href={`#${item.toLowerCase()}`}
-									onClick={() => setOpen(false)}
-									className='text-3xl font-oldstandard italic hover:text-stone-400 transition-colors'
-								>
-									{item}
-								</a>
-							))}
-						</nav>
-					</SheetContent>
-				</Sheet>
-			</div>
-		</nav>
-	);
+                {/* Far Right: Desktop Nav Links */}
+                <div className="hidden md:flex items-center justify-end gap-8 lg:gap-10 shrink-0">
+                    {navItems.map((item) => {
+                        const href = `/${item.toLowerCase()}`;
+                        const isActive = pathname === href;
+                        return (
+                            <Link
+                                key={item}
+                                href={href}
+                                className={`text-sm tracking-[0.3em] uppercase font-bold transition-all ${
+                                    isActive
+                                        ? 'underline decoration-primary underline-offset-4 text-black'
+                                        : 'text-stone-600 hover:text-black'
+                                }`}
+                                aria-current={isActive ? 'page' : undefined}
+                            >
+                                {item}
+                            </Link>
+                        );
+                    })}
+                </div>
+            </div>
+        </nav>
+    );
 }
