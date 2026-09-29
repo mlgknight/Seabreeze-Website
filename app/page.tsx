@@ -53,13 +53,9 @@ export default function Home() {
                     <video
                         autoPlay
                         muted
+                        loop
                         playsInline
                         preload='auto'
-                        onEnded={(e) => {
-                            const v = e.currentTarget as HTMLVideoElement;
-                            v.currentTime = 0;
-                            v.play().catch(() => {});
-                        }}
                         className='absolute inset-0 w-full h-full object-cover'
                     >
                         <source src='/videos/beach2.mp4' type='video/mp4' />
@@ -131,7 +127,7 @@ export default function Home() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 1.5 }}
-                            className='relative aspect-4/5 w-full overflow-hidden shadow-2xl rounded-sm group bg-card'
+                            className='relative aspect-[4/5] w-full overflow-hidden shadow-2xl rounded-sm group bg-card'
                         >
                             <div className='absolute inset-4 border border-card-foreground/40 z-10 pointer-events-none group-hover:inset-6 transition-all duration-700' />
 
@@ -139,8 +135,8 @@ export default function Home() {
                                 src='/updated_photos/IMG_2763.jpeg'
                                 alt='Founder Editorial'
                                 fill
+                                sizes='(max-width: 1024px) 100vw, 40vw'
                                 className='object-cover cursor-pointer grayscale-20 group-hover:grayscale-0 transition-all duration-[2s] group-hover:scale-105'
-                                priority
                             />
                         </motion.div>
 
@@ -154,7 +150,7 @@ export default function Home() {
                 </section>
 
                 {/* Section 2: Offerings */}
-                <section className='w-full py-13 bg-muted'>
+                <section className='w-full py-16 bg-muted'>
                     <div className='max-w-7xl mx-auto px-6'>
                         <div className='flex flex-col gap-6 md:flex-row md:justify-between md:items-end mb-10 border-b border-border pb-4'>
                             <div>
@@ -170,7 +166,7 @@ export default function Home() {
                             </p>
                         </div>
 
-                        {/* Square / Boxy Offerings Grid */}
+                        {/* Offerings Grid */}
                         <div className='cursor-pointer grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12 items-stretch'>
                             {offerings.map((item, idx) => (
                                 <div
@@ -182,8 +178,8 @@ export default function Home() {
                                             src={item.image}
                                             alt={item.title}
                                             fill
+                                            sizes='(max-width: 768px) 100vw, 33vw'
                                             className='object-cover transition duration-1000 ease-out group-hover:scale-105'
-                                            priority
                                         />
                                     </div>
                                     <div className='absolute inset-0 bg-black/20 transition duration-700 ease-out group-hover:bg-black/65 z-20' />
@@ -199,7 +195,7 @@ export default function Home() {
                 </section>
 
                 {/* Refined Scroll Wave Section */}
-<section
+                <section
                     ref={ref}
                     className='relative w-full py-28 md:py-36 bg-background overflow-hidden flex items-center justify-center'
                 >
@@ -254,7 +250,7 @@ export default function Home() {
                         </svg>
                     </motion.div>
 
-                    {/* Cleaned Content Card */}
+                    {/* Content Card */}
                     <div className='relative z-10 max-w-5xl text-center px-4 md:px-8 flex flex-col items-center justify-center gap-6'>
                         <motion.div
                             initial={{ opacity: 0, y: 15 }}
@@ -267,7 +263,6 @@ export default function Home() {
                                 Let Us Connect
                             </span>
 
-                            {/* Straight Unbroken Heading */}
                             <h2 className='text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-oldstandard italic tracking-tight text-primary drop-shadow-sm leading-none whitespace-nowrap'>
                                 The Tide Moves With You
                             </h2>
