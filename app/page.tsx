@@ -33,15 +33,15 @@ export default function Home() {
     const offerings = [
         {
             title: 'Social Management',
-            image: '/test_photos/IMG_3870.jpeg',
+            image: '/updated_photos/IMG_2746.jpeg',
         },
         {
             title: 'Brand Strategy',
-            image: '/Wrightville_beach.jpg',
+            image: '/updated_photos/IMG_2795.jpeg',
         },
         {
             title: 'Creative Production',
-            image: '/test_photos/IMG_2595.jpeg',
+            image: '/updated_photos/IMG_2616.jpeg',
         },
     ];
 
@@ -133,13 +133,13 @@ export default function Home() {
                             transition={{ duration: 1.5 }}
                             className='relative aspect-4/5 w-full overflow-hidden shadow-2xl rounded-sm group bg-card'
                         >
-                            <div className='absolute inset-4 border border-card-foreground/20 z-10 pointer-events-none group-hover:inset-6 transition-all duration-700' />
+                            <div className='absolute inset-4 border border-card-foreground/40 z-10 pointer-events-none group-hover:inset-6 transition-all duration-700' />
 
                             <Image
-                                src='/emma.png'
+                                src='/updated_photos/IMG_2763.jpeg'
                                 alt='Founder Editorial'
                                 fill
-                                className='object-cover grayscale-20 group-hover:grayscale-0 transition-all duration-[2s] group-hover:scale-105'
+                                className='object-cover cursor-pointer grayscale-20 group-hover:grayscale-0 transition-all duration-[2s] group-hover:scale-105'
                                 priority
                             />
                         </motion.div>
@@ -188,7 +188,7 @@ export default function Home() {
                                     </div>
                                     <div className='absolute inset-0 bg-black/20 transition duration-700 ease-out group-hover:bg-black/65 z-20' />
                                     <div className='relative z-30 flex h-full flex-col items-center justify-center text-center p-6 text-white transition-all duration-700 ease-out group-hover:-translate-y-1'>
-                                        <h4 className='text-lg md:text-2xl flex font-semibold uppercase tracking-[0.2em] drop-shadow-[0_16px_30px_rgba(0,0,0,0.55)] transition-all duration-700 ease-out group-hover:scale-105'>
+                                        <h4 className='text-lg md:text-3xl flex font-extrabold uppercase tracking-[0.2em] drop-shadow-[0_16px_30px_rgba(0,0,0,0.55)] transition-all duration-700 ease-out group-hover:scale-105'>
                                             {item.title}
                                         </h4>
                                     </div>
@@ -199,14 +199,14 @@ export default function Home() {
                 </section>
 
                 {/* Refined Scroll Wave Section */}
-                <section
+<section
                     ref={ref}
                     className='relative w-full py-28 md:py-36 bg-background overflow-hidden flex items-center justify-center'
                 >
                     {/* Background Wave - Layer 3 */}
                     <motion.div
                         style={{ y: wave3Y, x: wave3X }}
-                        className='absolute bottom-0 -left-[10%] w-[120%] h-64 md:h-96 pointer-events-none z-0 opacity-15'
+                        className='absolute -bottom-16 -left-[10%] w-[120%] h-80 md:h-[28rem] pointer-events-none z-0 opacity-[0.15]'
                     >
                         <svg
                             viewBox='0 0 1440 320'
@@ -224,7 +224,7 @@ export default function Home() {
                             x: wave2X,
                             rotate: wave2Rotate,
                         }}
-                        className='absolute bottom-0 -left-[15%] w-[130%] h-64 md:h-96 lg:h-[26rem] pointer-events-none z-0 opacity-25 origin-bottom'
+                        className='absolute -bottom-16 -left-[15%] w-[130%] h-80 md:h-[28rem] lg:h-[30rem] pointer-events-none z-0 opacity-25 origin-bottom'
                     >
                         <svg
                             viewBox='0 0 1440 320'
@@ -243,7 +243,7 @@ export default function Home() {
                             scale: wave1Scale,
                             rotate: wave1Rotate,
                         }}
-                        className='absolute bottom-0 -left-[20%] w-[140%] h-64 md:h-96 lg:h-[28rem] pointer-events-none z-0 opacity-50 origin-bottom'
+                        className='absolute -bottom-16 -left-[20%] w-[140%] h-80 md:h-[28rem] lg:h-[32rem] pointer-events-none z-0 opacity-50 origin-bottom'
                     >
                         <svg
                             viewBox='0 0 1440 320'
@@ -264,7 +264,7 @@ export default function Home() {
                             className='flex flex-col items-center gap-3 w-full'
                         >
                             <span className='text-xs font-mono tracking-[0.35em] uppercase text-muted-foreground'>
-                                Let's Connect
+                                Let Us Connect
                             </span>
 
                             {/* Straight Unbroken Heading */}
@@ -285,7 +285,7 @@ export default function Home() {
                                 href='/inquire'
                                 className='inline-flex items-center gap-3 bg-primary text-primary-foreground px-9 py-4 rounded-full font-mono text-xs uppercase tracking-[0.25em] shadow-lg hover:shadow-xl hover:bg-primary/95 transition-all duration-300 border border-primary-foreground/15'
                             >
-                                Contact Us
+                                Contact
                                 <span className='text-base leading-none'>→</span>
                             </Link>
                         </motion.div>

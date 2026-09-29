@@ -21,7 +21,7 @@ export default function Navigation() {
 
     return (
         /* Nav height is strictly controlled by h-16 or h-20 */
-        <nav className="fixed top-0 left-0 z-50 w-full h-16 md:h-29 bg-[#F9F7F2]/80 backdrop-blur-md border-b border-[#2A2A2A]/5 transition-all duration-300">
+        <nav className="fixed top-0 left-0 z-50 w-full h-20 md:h-29 bg-[#F9F7F2]/80 backdrop-blur-md border-b border-[#2A2A2A]/5 transition-all duration-300">
             <div className="w-full h-full mx-auto px-6 lg:px-12 flex items-center justify-between">
                 {/* Far Left: Main Logo Wrapper */}
                 <Link href="/" aria-label="Home" className="relative flex items-center shrink-0 h-full w-48 md:w-64">
@@ -31,7 +31,7 @@ export default function Navigation() {
                         width={400}
                         height={200}
                         /* Absolute positioning allows the image to overflow the header without expanding it */
-                        className="absolute left-0 top-1/2 -translate-y-1/2 cursor-pointer brightness-1 opacity-90 w-auto h-20 md:h-32 lg:h-44 max-w-none object-contain"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 cursor-pointer brightness-1 opacity-90 w-auto h-28 md:h-32 lg:h-44 max-w-none object-contain"
                         priority
                     />
                 </Link>
@@ -42,7 +42,7 @@ export default function Navigation() {
                         <SheetTrigger asChild>
                             <Button
                                 variant="ghost"
-                                size="icon"
+                                size="icon-lg"
                                 className="hover:bg-transparent -mr-2"
                                 aria-label="Toggle menu"
                             >

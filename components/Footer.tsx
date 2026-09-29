@@ -1,54 +1,54 @@
 'use client';
 
+import { Instagram, MailIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const Footer = () => {
-	const year = new Date().getFullYear();
-
 	return (
-		<footer className='relative z-20 w-full bg-secondary text-secondary-foreground border-t border-secondary-foreground/20 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]'>
+		<footer className='relative z-20 w-full bg-primary text-white border-t border-white/20 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]'>
 			{/* Main Footer Container */}
-			<div className='w-full px-6 md:px-12 lg:px-16 py-16 lg:py-20'>
-				<div className='max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12 lg:gap-16'>
+			<div className='w-full px-4 py-10 sm:px-6 md:px-6 lg:px-8 lg:py-16'>
+				<div className='mx-auto flex max-w-7xl flex-col items-center gap-8 text-center lg:flex-row lg:items-start lg:justify-between lg:text-left'>
 					{/* Left: Brand / Logo Column */}
-					<div className='flex flex-col gap-6 lg:w-2/5'>
-						<Link href='/' className='flex items-center gap-4 group w-fit'>
+					<div className='flex flex-col items-center gap-5 text-center lg:items-start lg:text-left lg:w-2/5'>
+						<Link
+							href='/'
+							className='group flex w-fit items-center gap-3 text-center lg:gap-4'
+						>
 							<Image
 								src='/Seabreeze_Strategies_Logo/no_background2.png'
 								alt='Seabreeze Strategies Logo'
-								width={120}
-								height={120}
-								className='w-14 h-14 md:w-20 md:h-20 drop-shadow-md transition-transform duration-500 group-hover:scale-105'
+								width={160}
+								height={160}
+								sizes='(max-width: 768px) 56px, 160px'
+								quality={100}
+								className='h-14 w-14 object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.22)] transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_14px_28px_rgba(0,0,0,0.32)] md:h-40 md:w-40'
 								priority
 							/>
-							<span className='font-oldstandard text-2xl md:text-3xl font-bold leading-none tracking-tight text-secondary-foreground'>
+							<span className='text-3xl font-bold leading-none tracking-tight text-white md:text-4xl'>
 								Seabreeze
 								<br />
-								<span className='font-light italic text-xl md:text-2xl opacity-90'>
+								<span className='text-2xl font-light italic text-white/90 md:text-3xl'>
 									Strategies
 								</span>
 							</span>
 						</Link>
 
-						<p className='text-sm md:text-base opacity-80 leading-relaxed max-w-sm font-light tracking-wide'>
-							Guiding brands through the digital landscape with intentional
-							storytelling and effortless coastal grace.
+						<p className='max-w-sm text-base font-light leading-relaxed tracking-wide text-white/80 md:text-lg'>
+							Digital marketing solutions for small businesses, non-profits &
+							organizations based in Wilmington, NC
 						</p>
-
-						<div className='text-xs font-mono tracking-widest uppercase opacity-60 mt-2'>
-							Est. 2026 — Based in Wilmington, NC
-						</div>
 					</div>
 
 					{/* Right: Navigation + Contact Columns */}
-					<div className='grid grid-cols-1 sm:grid-cols-2 gap-10 lg:w-3/5 lg:justify-items-end'>
+					<div className='grid w-full max-w-xl grid-cols-1 gap-8 text-center sm:grid-cols-2 sm:text-left lg:w-3/5 lg:max-w-none lg:justify-items-end'>
 						{/* Navigation Column */}
-						<div className='flex flex-col gap-4'>
-							<h3 className='text-xs font-semibold uppercase tracking-[0.3em] opacity-60 text-secondary-foreground'>
+						<div className='flex flex-col items-center gap-4 sm:items-start'>
+							<h3 className='text-sm font-semibold uppercase tracking-[0.3em] text-white/60'>
 								Navigation
 							</h3>
-							<nav className='flex flex-col gap-2.5'>
+							<nav className='flex flex-col items-center gap-3 sm:items-start'>
 								{[
 									{ label: 'Home', href: '/' },
 									{ label: 'About', href: '/about' },
@@ -59,7 +59,7 @@ const Footer = () => {
 									<Link
 										key={label}
 										href={href}
-										className='text-sm opacity-80 hover:opacity-100 hover:translate-x-1 transition-all duration-300 w-fit'
+										className='w-fit text-base text-white/80 transition-all duration-300 hover:translate-x-1 hover:text-white sm:text-left'
 									>
 										{label}
 									</Link>
@@ -68,47 +68,49 @@ const Footer = () => {
 						</div>
 
 						{/* Contact & Social Column */}
-						<div className='flex flex-col gap-4'>
-							<h3 className='text-xs font-semibold uppercase tracking-[0.3em] opacity-60 text-secondary-foreground'>
+						<div className='flex flex-col items-center gap-4 sm:items-start'>
+							<h3 className='text-base font-semibold uppercase tracking-[0.3em] text-white/60'>
 								Connect
 							</h3>
-							<div className='flex flex-col gap-2.5 text-sm'>
+							<div className='flex flex-col items-center gap-3 text-base sm:items-start'>
 								<a
-									href='mailto:hello@seabreezestrategies.com'
-									className='opacity-80 hover:opacity-100 hover:translate-x-1 transition-all duration-300 w-fit'
+									href='mailto:emma.gordon2704@gmail.com'
+									className='w-fit text-base text-white/80 transition-all duration-300 hover:translate-x-1 hover:text-white'
 								>
-									hello@seabreezestrategies.com
+									emma.gordon2704@gmail.com
 								</a>
 
 								<a
 									href='tel:+13213399807'
-									className='opacity-80 hover:opacity-100 hover:translate-x-1 transition-all duration-300 w-fit'
+									className='w-fit text-base text-white/80 transition-all duration-300 hover:translate-x-1 hover:text-white'
 								>
 									(321) 339-9807
 								</a>
 
-								<p className='opacity-60 leading-relaxed font-light'>
+								<p className='text-base leading-relaxed font-light text-white/60'>
 									Wilmington, North Carolina
 								</p>
 							</div>
 
 							{/* Social Badges */}
-							<div className='flex items-center gap-4 mt-3 pt-3 border-t border-secondary-foreground/15'>
-								{[
-									{ label: 'Instagram', href: 'https://instagram.com' },
-									{ label: 'LinkedIn', href: 'https://linkedin.com' },
-									{ label: 'Facebook', href: 'https://facebook.com' },
-								].map(({ label, href }) => (
-									<a
-										key={label}
-										href={href}
-										target='_blank'
-										rel='noopener noreferrer'
-										className='text-xs font-medium uppercase tracking-widest opacity-60 hover:opacity-100 hover:underline underline-offset-4 transition-all duration-200'
-									>
-										{label}
-									</a>
-								))}
+							<div className='flex items-center justify-center gap-3 border-t border-secondary-foreground/15 pt-3 sm:justify-start'>
+								<a
+									href='https://instagram.com/seabreezestrategies'
+									target='_blank'
+									rel='noopener noreferrer'
+									aria-label='Instagram seabreezestrategies'
+									className='flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-white/5 text-white/80 transition-all duration-200 hover:border-white/60 hover:bg-white/10 hover:text-white'
+								>
+									<Instagram className='h-4 w-4' />
+								</a>
+
+								<a
+									href='mailto:emma.gordon2704@gmail.com'
+									aria-label='Email Emma Gordon'
+									className='flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-white/5 text-white/80 transition-all duration-200 hover:border-white/60 hover:bg-white/10 hover:text-white'
+								>
+									<MailIcon className='h-4 w-4' />
+								</a>
 							</div>
 						</div>
 					</div>
@@ -116,12 +118,12 @@ const Footer = () => {
 			</div>
 
 			{/* Bottom Bar */}
-			<div className='w-full bg-primary text-primary-foreground px-6 md:px-12 py-5 border-t border-primary-foreground/10'>
-				<div className='max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left'>
-					<p className='text-sm font-oldstandard tracking-wide'>
-						© {year} Seabreeze Strategies. All rights reserved.
+			<div className='w-full bg-secondary px-3 py-4 text-secondary-foreground border-t border-secondary-foreground/10 md:px-6'>
+				<div className='mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left'>
+					<p className='text-base font-bolder tracking-wide'>
+						© 2026 Seabreeze Strategies. All rights reserved.
 					</p>
-					<p className='text-xs font-light tracking-widest uppercase opacity-80'>
+					<p className='text-sm font-bolder font-light uppercase tracking-widest opacity-80'>
 						Crafting digital success, one wave at a time.
 					</p>
 				</div>

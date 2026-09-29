@@ -8,7 +8,7 @@ export default function AboutPage() {
 			<Navigation />
 
 			{/* HERO WITH BACKGROUND IMAGE */}
-			<div className='relative w-full h-[60vh] md:h-[80vh] lg:h-[800px] flex items-center justify-center overflow-hidden bg-primary'>
+			<div className='relative w-full h-[60vh] md:h-[80vh] lg:h-200 flex items-center justify-center overflow-hidden bg-primary'>
 				{/* Background Beach Image */}
 				<Image
 					src='/Wrightville_beach.jpg'
@@ -80,13 +80,13 @@ export default function AboutPage() {
 					<div className='absolute inset-0 border border-muted-foreground/30 rounded-sm translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-700 ease-out z-0' />
 
 					{/* Image Wrapper Frame */}
-					<div className='relative aspect-[4/5] w-full overflow-hidden shadow-2xl rounded-sm bg-card z-10 transform transition-transform duration-700 ease-out group-hover:-translate-x-2 group-hover:-translate-y-2'>
+					<div className='relative aspect-4/5 w-full overflow-hidden shadow-2xl rounded-sm bg-card z-10 transform transition-transform duration-700 ease-out group-hover:-translate-x-2 group-hover:-translate-y-2'>
 						{/* Shifting Inner Border lines */}
 						<div className='absolute inset-4 border border-white/25 z-20 pointer-events-none group-hover:inset-6 transition-all duration-700 ease-out' />
 
 						{/* Crystal Clear, Unmodified Portrait */}
 						<Image
-							src='/test_photos/IMG_1062.jpeg'
+							src='/updated_photos/IMG_2737.jpeg'
 							alt='Founder Portrait'
 							fill
 							className='object-cover' // Kept completely clean to keep image 100% clear from the start
@@ -96,69 +96,106 @@ export default function AboutPage() {
 				</div>
 			</section>
 
-			{/* SECONDARY BRAND BANNER */}
-			<section
-				className='w-full h-[40vh] md:h-[70vh] bg-cover bg-center bg-no-repeat flex items-center justify-center text-center relative'
-				style={{ backgroundImage: "url('/your-hero-image.jpg')" }}
-			>
-				<div className='absolute inset-0 bg-black/40'></div>
+			{/* ABOUT SEABREEZE STRATEGIES */}
+			<section className='relative w-full overflow-hidden bg-[#f3eadf]'>
+				<div className='relative h-105 md:h-140'>
+					<Image
+						src='/updated_photos/IMG_2812.jpeg'
+						alt='Seabreeze Strategies coastal backdrop'
+						fill
+						className='object-cover object-center md:object-[center_44%]'
+					/>
+					<div className='absolute inset-0 bg-[#896447]/55' />
 
-				<div className='relative z-10 px-6'>
-					<h1 className='text-4xl md:text-5xl font-bold text-white mb-4'>
-						About Seabreeze Strategies
-					</h1>
-					<p className='max-w-2xl mx-auto text-lg text-white/90'>
-						Helping brands navigate the digital tide with clarity, creativity,
-						and strategy.
-					</p>
+					<div className='relative z-10 mx-auto flex h-full max-w-6xl items-center px-6 md:px-10'>
+						<div className='max-w-2xl text-white mr-10'>
+							<p className='mb-4 text-[10px] font-semibold uppercase tracking-[0.38em] text-white/80'>
+								About Seabreeze Strategies
+							</p>
+							<h2 className='text-4xl leading-none md:text-6xl lg:text-7xl'>
+								We build brands that feel as good as they look.
+							</h2>
+						</div>
+					</div>
 				</div>
 			</section>
 
-
-
 			{/* VALUES */}
-			<section className='max-w-6xl mx-auto py-12 md:py-20 px-6'>
-				<h2 className='text-3xl font-semibold text-center mb-12'>Our Values</h2>
+			<section className='mx-auto max-w-6xl px-6 py-14 md:py-20'>
+				<div className='mb-12 text-center'>
+					<p className='mb-3 text-[10px] font-semibold uppercase tracking-[0.32em] text-[#896447]/70'>
+						What guides us
+					</p>
+					<h2 className='text-4xl text-[#896447] md:text-5xl'>
+						Built for thoughtful growth.
+					</h2>
+				</div>
 
-				<div className='grid md:grid-cols-3 gap-10'>
-					<div>
-						<h3 className='text-xl font-semibold mb-2'>Clarity</h3>
-						<p className='opacity-80'>
-							We simplify the complex so you can move forward confidently.
+				<div className='grid gap-10 md:grid-cols-3'>
+					<div className='border border-[#d9c4a9] bg-[#f8f3ee] p-7'>
+						<h3 className='mb-3 text-2xl text-[#896447]'>Clarity</h3>
+						<p className='text-base leading-relaxed text-[#896447]/80'>
+							We simplify the noise so your message feels focused, confident,
+							and easy to trust.
 						</p>
 					</div>
 
-					<div>
-						<h3 className='text-xl font-semibold mb-2'>Creativity</h3>
-						<p className='opacity-80'>
-							We bring fresh ideas and thoughtful execution to every project.
+					<div className='border border-[#d9c4a9] bg-[#f8f3ee] p-7'>
+						<h3 className='mb-3 text-2xl text-[#896447]'>Strategy</h3>
+						<p className='text-base leading-relaxed text-[#896447]/80'>
+							We build plans that connect vision to action and help businesses
+							create momentum that lasts.
 						</p>
 					</div>
 
-					<div>
-						<h3 className='text-xl font-semibold mb-2'>Connection</h3>
-						<p className='opacity-80'>
-							We help brands build meaningful relationships with their audience.
+					<div className='border border-[#d9c4a9] bg-[#f8f3ee] p-7'>
+						<h3 className='mb-3 text-2xl text-[#896447]'>Connection</h3>
+						<p className='text-base leading-relaxed text-[#896447]/80'>
+							We help brands build meaningful relationships with the people who
+							matter most.
 						</p>
 					</div>
 				</div>
 			</section>
 
 			{/* CTA */}
-			<section className='w-full bg-primary text-primary-foreground py-12 md:py-20 px-6 text-center'>
-				<h2 className='text-3xl font-semibold mb-4'>
-					Ready to Grow Your Brand?
-				</h2>
-				<p className='max-w-xl mx-auto opacity-80 mb-8'>
-					Let’s build a digital presence that feels authentic, strategic, and
-					uniquely you.
-				</p>
-				<a
-					href='/contact'
-					className='px-6 py-3 bg-white text-primary font-semibold rounded-md shadow hover:opacity-90 transition'
-				>
-					Get in Touch
-				</a>
+			<section className='w-full px-4 py-16 md:px-6 md:py-24'>
+				<div className='mx-auto grid max-w-6xl overflow-hidden border border-[#d9c4a9] bg-[#f8f3ee] shadow-[0_30px_80px_rgba(137,100,71,0.08)] md:grid-cols-[1.05fr_0.95fr]'>
+					<div className='relative min-h-75 md:min-h-105'>
+						<Image
+							src='/updated_photos/IMG_2697.jpeg'
+							alt='Seabreeze Strategy Session'
+							fill
+							className='object-cover'
+						/>
+						<div className='absolute inset-0 bg-linear-to-r from-[#896447]/25 via-transparent to-transparent' />
+					</div>
+
+					<div className='flex flex-col justify-center p-8 md:p-12 lg:p-16'>
+						<p className='mb-4 text-[10px] font-semibold uppercase tracking-[0.32em] text-[#896447]/60'>
+							Let&apos;s build your next chapter
+						</p>
+						<h2 className='text-4xl leading-none text-[#896447] md:text-6xl'>
+							Ready to grow your brand?
+						</h2>
+						<div className='my-6 h-px w-16 bg-[#afccd1]' />
+						<p className='max-w-md text-base leading-relaxed text-[#896447]/80 md:text-lg'>
+							Whether you need strategy, content, or a sharper digital presence,
+							I&apos;ll help you turn attention into momentum.
+						</p>
+						<div className='mt-8 flex flex-col items-center gap-4'>
+							<a
+								href='/inquire'
+								className='inline-flex items-center justify-center bg-[#896447] px-7 py-3 text-xs font-medium uppercase tracking-[0.28em] text-[#f4ece4] transition hover:bg-[#735739]'
+							>
+								Book Now
+							</a>
+							<span className='text-[10px] font-semibold uppercase tracking-[0.32em] text-[#896447]/60'>
+								Seabreeze Strategies
+							</span>
+						</div>
+					</div>
+				</div>
 			</section>
 			<Footer />
 		</main>

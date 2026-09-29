@@ -4,30 +4,41 @@ import { useState } from 'react';
 import Navigation from '@/components/nav/Navigation';
 import Footer from '@/components/Footer';
 
-export default function ContactPage() {
-	const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'submitted'
-	const [formData, setFormData] = useState({
-		name: '',
-		email: '',
-		service: 'Brand Strategy & Launch',
-		message: '',
-	});
+const initialForm = {
+	name: '',
+	email: '',
+	service: 'Brand Strategy & Launch',
+	message: '',
+	website: '', // honeypot: real users never fill this in
+};
 
-	const handleSubmit = async (e) => {
+export default function ContactPage() {
+	const [status, setStatus] = useState('idle');
+	const [formData, setFormData] = useState(initialForm);
+
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setStatus('submitting');
 
-		// Simulate API request (e.g., via Resend / SendGrid / Next API route)
 		try {
-			await new Promise((resolve) => setTimeout(resolve, 1000));
+			const res = await fetch('/api/contact', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(formData),
+			});
+			if (!res.ok) throw new Error('Request failed');
 			setStatus('submitted');
 		} catch (error) {
 			console.error(error);
-			setStatus('idle');
+			setStatus('error');
 		}
 	};
 
-	const handleChange = (e) => {
+	const handleChange = (
+		e: React.ChangeEvent<
+			HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+		>,
+	) => {
 		const { name, value } = e.target;
 		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
@@ -36,57 +47,9 @@ export default function ContactPage() {
 		<div className='w-full min-h-screen font-oldstandard bg-background text-foreground flex flex-col justify-between'>
 			<Navigation />
 
-			{/* Semantic main container for screen readers & SEO */}
-			<main className='w-full max-w-6xl mx-auto px-6 pt-28 pb-16 md:pt-36 md:pb-24 grow'>
-				<section className='grid gap-10 lg:grid-cols-12 items-start'>
-					{/* Left Column: Direct Info */}
-					<div className='lg:col-span-5'>
-						<div className='rounded-3xl border border-border/80 bg-card p-8 md:p-10 shadow-sm'>
-							<span className='text-xs font-mono tracking-[0.25em] uppercase text-muted-foreground block mb-2'>
-								Get In Touch
-							</span>
-							<h1 className='text-3xl md:text-4xl font-oldstandard font-semibold mb-6 text-foreground'>
-								Start a Conversation
-							</h1>
-
-							<div className='space-y-6 text-sm text-muted-foreground leading-relaxed font-light'>
-								<div>
-									<p className='font-medium text-foreground mb-1'>Email Us</p>
-									<a
-										href='mailto:hello@seabreezestrategies.com'
-										className='hover:text-foreground underline decoration-border underline-offset-4 transition-colors'
-									>
-										hello@seabreezestrategies.com
-									</a>
-								</div>
-
-								<div>
-									<p className='font-medium text-foreground mb-1'>Call Us</p>
-									<a
-										href='tel:+13213399807'
-										className='hover:text-foreground underline decoration-border underline-offset-4 transition-colors'
-									>
-										(321) 339-9807
-									</a>
-								</div>
-
-								<hr className='border-border/60 my-6' />
-
-								<div>
-									<p className='font-medium text-foreground mb-2'>
-										Who We Partner With
-									</p>
-									<p>
-										Boutique brands, service-based businesses, and vision-driven
-										founders seeking a refined, strategic digital presence.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					{/* Right Column: Contact Form */}
-					<div className='lg:col-span-7 rounded-3xl border border-border/80 bg-card p-8 md:p-10 shadow-sm'>
+			<main className='w-full flex-1 px-6 pt-28 pb-14 md:px-12 md:pt-32 md:pb-20 lg:px-16'>
+				<section className='w-full max-w-7xl mx-auto'>
+					<div className='w-full p-0 md:p-4 lg:p-6'>
 						{status === 'submitted' ? (
 							<div className='py-12 text-center space-y-4'>
 								<div className='w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto text-xl font-bold'>
@@ -103,12 +66,7 @@ export default function ContactPage() {
 								<button
 									onClick={() => {
 										setStatus('idle');
-										setFormData({
-											name: '',
-											email: '',
-											service: 'Brand Strategy & Launch',
-											message: '',
-										});
+										setFormData(initialForm);
 									}}
 									className='mt-4 text-xs font-mono uppercase tracking-widest text-muted-foreground underline hover:text-foreground transition-colors'
 								>
@@ -117,20 +75,32 @@ export default function ContactPage() {
 							</div>
 						) : (
 							<>
-								<h2 className='text-2xl font-oldstandard font-semibold mb-2'>
+								<h2 className='text-4xl md:text-5xl lg:text-6xl font-oldstandard font-semibold mb-3'>
 									Project Details
 								</h2>
-								<p className='text-sm text-muted-foreground font-light mb-8'>
+								<p className='text-base md:text-lg text-muted-foreground font-light mb-10 max-w-2xl'>
 									Fill out the form below and we’ll reach out with recommended
 									next steps.
 								</p>
 
-								<form onSubmit={handleSubmit} className='space-y-6'>
-									<div className='grid gap-6 sm:grid-cols-2'>
+								<form onSubmit={handleSubmit} className='space-y-8'>
+									{/* Honeypot field: hidden from humans, bots tend to fill it */}
+									<input
+										type='text'
+										name='website'
+										value={formData.website}
+										onChange={handleChange}
+										tabIndex={-1}
+										autoComplete='off'
+										className='hidden'
+										aria-hidden='true'
+									/>
+
+									<div className='grid gap-8 sm:grid-cols-2'>
 										<div>
 											<label
 												htmlFor='name'
-												className='block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2'
+												className='block text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-1'
 											>
 												Your Name *
 											</label>
@@ -142,14 +112,14 @@ export default function ContactPage() {
 												value={formData.name}
 												onChange={handleChange}
 												placeholder='Jane Doe'
-												className='w-full px-4 py-3 bg-background border border-border/80 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-foreground transition-all placeholder:text-muted-foreground/50'
+												className='w-full px-2 py-2 bg-transparent border-b border-border/80 rounded-none text-base md:text-lg focus:outline-none focus:ring-0 focus:border-foreground transition-all placeholder:text-muted-foreground/50'
 											/>
 										</div>
 
 										<div>
 											<label
 												htmlFor='email'
-												className='block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2'
+												className='block text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-1'
 											>
 												Email Address *
 											</label>
@@ -161,7 +131,7 @@ export default function ContactPage() {
 												value={formData.email}
 												onChange={handleChange}
 												placeholder='jane@example.com'
-												className='w-full px-4 py-3 bg-background border border-border/80 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-foreground transition-all placeholder:text-muted-foreground/50'
+												className='w-full px-2 py-2 bg-transparent border-b border-border/80 rounded-none text-base md:text-lg focus:outline-none focus:ring-0 focus:border-foreground transition-all placeholder:text-muted-foreground/50'
 											/>
 										</div>
 									</div>
@@ -169,7 +139,7 @@ export default function ContactPage() {
 									<div>
 										<label
 											htmlFor='service'
-											className='block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2'
+											className='block text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-1'
 										>
 											What do you need help with?
 										</label>
@@ -179,7 +149,7 @@ export default function ContactPage() {
 												name='service'
 												value={formData.service}
 												onChange={handleChange}
-												className='w-full px-4 py-3 bg-background border border-border/80 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-foreground transition-all appearance-none cursor-pointer pr-10'
+												className='w-full px-4 py-4 bg-transparent border-b border-border/80 rounded-none text-base md:text-lg focus:outline-none focus:ring-0 focus:border-foreground transition-all appearance-none cursor-pointer pr-12'
 											>
 												<option value='Brand Strategy & Launch'>
 													Brand Strategy & Launch
@@ -203,7 +173,7 @@ export default function ContactPage() {
 									<div>
 										<label
 											htmlFor='message'
-											className='block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2'
+											className='block text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-1'
 										>
 											Project Overview & Goals *
 										</label>
@@ -215,14 +185,21 @@ export default function ContactPage() {
 											value={formData.message}
 											onChange={handleChange}
 											placeholder='Tell us about your timeline, current goals, and where you need support...'
-											className='w-full px-4 py-3 bg-background border border-border/80 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-foreground transition-all resize-none placeholder:text-muted-foreground/50'
+											className='w-full px-2 py-2 bg-transparent border-b border-border/80 rounded-none text-base md:text-lg focus:outline-none focus:ring-0 focus:border-foreground transition-all resize-none placeholder:text-muted-foreground/50'
 										/>
 									</div>
+
+									{status === 'error' && (
+										<p className='text-sm text-red-600 text-center'>
+											Something went wrong. Please try again or email us
+											directly.
+										</p>
+									)}
 
 									<button
 										type='submit'
 										disabled={status === 'submitting'}
-										className='w-full py-4 bg-primary text-primary-foreground font-mono text-xs uppercase tracking-[0.2em] rounded-xl hover:opacity-95 disabled:opacity-50 transition-all shadow-md active:scale-[0.99] flex items-center justify-center gap-2'
+										className='cursor-pointer w-full max-w-sm mx-auto py-3 bg-primary text-primary-foreground font-mono text-xs uppercase tracking-[0.2em] rounded-none hover:opacity-95 disabled:opacity-50 transition-all active:scale-[0.99] flex items-center justify-center gap-2'
 									>
 										{status === 'submitting' ? (
 											<span>Sending...</span>
@@ -239,7 +216,6 @@ export default function ContactPage() {
 					</div>
 				</section>
 			</main>
-
 			<Footer />
 		</div>
 	);

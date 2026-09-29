@@ -9,8 +9,89 @@ import {
 	SiHootsuite,
 } from 'react-icons/si';
 import PageTemplate from '@/components/PageTemplate';
+import Image from 'next/image';
+
+type ServiceCard = {
+	title: string;
+	image: string;
+	subtitle: string;
+	points: string[];
+};
 
 export default function ServicesPage() {
+	const servicesData: ServiceCard[] = [
+		{
+			title: 'Brand Kits',
+			image: '/services_photos/houses.jpg',
+			subtitle: 'For brands looking for a cohesive digital presence:',
+			points: [
+				'Aesthetic mood board creation',
+				'Selection of brand-aligned color palette, motifs, and fonts',
+				'Establish brand tone & voice',
+				'One of a kind brand kit for digital marketing',
+			],
+		},
+		{
+			title: 'Content Compass',
+			image: '/services_photos/compass.jpg',
+			subtitle: 'For the DIY-ers that need an accountability partner:',
+			points: [
+				'Marketing strategy & analytics monitoring',
+				'Custom monthly content calendar',
+				'Run-down of current trends',
+				'Ongoing support',
+			],
+		},
+		{
+			title: 'On-Site Content Creation',
+			image: '/services_photos/phone.avif',
+			subtitle: 'For busy business-owners who don’t have time to grab content:',
+			points: [
+				'Capture photos',
+				'Film videos',
+				'Behind the scenes footage',
+				'Editing',
+			],
+		},
+		{
+			title: 'Event Advertising',
+			image: '/services_photos/service.jpg',
+			subtitle: 'For businesses looking to advertise large events:',
+			points: [
+				'Live event coverage (including photo & video)',
+				'Targeted ad campaigns',
+				'Event page creation & marketing',
+			],
+		},
+	];
+
+	const packagesData: ServiceCard[] = [
+		{
+			title: 'The Shoreline',
+			image: '/packages/shoreline.jpeg',
+			subtitle: 'For brands looking to establish a presence on social media:',
+			points: [
+				'3 posts/week on up to 2 platforms (mix of static, carousels, reels)',
+				'Copywriting',
+				'Monthly content calendars',
+				'Marketing strategy & analytics monitoring',
+				'Ongoing support',
+			],
+		},
+		{
+			title: 'The Offshore',
+			image: '/packages/offshore.avif',
+			subtitle: 'For brands looking to grow their presence on social media:',
+			points: [
+				'5 posts/week on up to 2 platforms (mix of static, carousels, reels)',
+				'Copywriting',
+				'Monthly content calendars',
+				'Marketing strategy & analytics monitoring',
+				'Ongoing support',
+			],
+		},
+	];
+
 	const skillTools = [
 		{
 			name: 'Shopify',
@@ -70,106 +151,80 @@ export default function ServicesPage() {
 		},
 	];
 
-	return (
-		<PageTemplate
-			title='Services'
-			subtitle='Brand strategy and polished content systems for social growth.'
-			description='From social media marketing to full-service management, we help brands grow with clarity, consistency, and performance.'
-			heroClassName='bg-background'
-			heroOverlayClassName='bg-transparent'
+	const renderInfoCard = (card: ServiceCard) => (
+		<div
+			key={card.title}
+			className='w-full overflow-hidden rounded-md border border-stone-300/60 bg-[#cabfae] shadow-sm'
 		>
-			<div className='space-y-20'>
-				<section className='grid gap-10 lg:grid-cols-2'>
-					<article className='space-y-3'>
-						<h2 className='text-2xl font-semibold'>Strategy & Planning</h2>
-						<p className='text-base opacity-80 leading-relaxed'>
-							We map your audience, messaging, and creative cadence so every
-							asset feels intentional and on-brand.
-						</p>
-					</article>
+			<div className='relative aspect-16/10 w-full'>
+				<Image
+					src={card.image}
+					alt={card.title}
+					fill
+					sizes='(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw'
+					className='object-cover'
+				/>
+			</div>
+			<div className='p-4 text-[#f4efe6] sm:p-6'>
+				<p className='text-xs leading-snug sm:text-base'>{card.subtitle}</p>
+				<h3 className='mb-2 mt-1.5 font-serif text-xl italic sm:mb-2.5 sm:mt-2 sm:text-3xl'>
+					{card.title}
+				</h3>
+				<ul className='space-y-1.5'>
+					{card.points.map((point: string) => (
+						<li key={point} className='flex gap-2 text-sm leading-snug sm:text-md'>
+							<span className='mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f4efe6]' />
+							<span className='wrap-break-word'>{point}</span>
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+	);
 
-					<article className='space-y-3'>
-						<h2 className='text-2xl font-semibold'>Creative Production</h2>
-						<p className='text-base opacity-80 leading-relaxed'>
-							From short-form video to visual identity, we build polished
-							content that performs across channels.
-						</p>
-					</article>
-
-					<article className='space-y-3'>
-						<h2 className='text-2xl font-semibold'>Community & Growth</h2>
-						<p className='text-base opacity-80 leading-relaxed'>
-							We help you turn followers into customers with clear messaging,
-							thoughtful community, and high-conversion systems.
-						</p>
-					</article>
-
-					<article className='space-y-3'>
-						<h2 className='text-2xl font-semibold'>Brand Systems</h2>
-						<p className='text-base opacity-80 leading-relaxed'>
-							Scale visually and strategically with brand guidelines, content
-							frameworks, and a repeatable creative playbook.
-						</p>
-					</article>
+	return (
+		<PageTemplate title='Services' hideHero>
+			<div className='space-y-14 sm:space-y-20'>
+				<section>
+					<h2 className='mb-6 text-center font-serif text-3xl sm:mb-8 sm:text-5xl'>
+						Our Services
+					</h2>
+					<div className='grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4'>
+						{servicesData.map(renderInfoCard)}
+					</div>
 				</section>
 
-				<section className='space-y-20'>
-					<div>
-						<h2 className='text-3xl font-semibold mb-8'>Skills & Tools</h2>
-						<div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-4'>
-							{skillTools.map((tool) => {
-								const IconComponent = tool.icon;
-								return (
-									<div
-										key={tool.name}
-										className='rounded-3xl border border-stone-200 bg-white/90 p-6 shadow-sm flex flex-col h-full hover:shadow-md transition-shadow'
-									>
-										<div className='flex items-center gap-3 mb-3'>
-											<div className='p-2.5 rounded-2xl bg-stone-100 flex items-center justify-center'>
-												<IconComponent className={`w-6 h-6 ${tool.color}`} />
-											</div>
-											<h3 className='text-xl font-semibold'>{tool.name}</h3>
-										</div>
-										<p className='text-sm opacity-80 leading-relaxed'>
-											{tool.description}
-										</p>
-									</div>
-								);
-							})}
-						</div>
+				<section className='w-full border-b border-border/80 bg-transparent px-2 py-10'>
+					<h2 className='mb-6 text-center font-serif text-3xl sm:mb-8 sm:text-5xl'>
+						Our Packages
+					</h2>
+					<div className='mx-auto grid max-w-2xl grid-cols-2 gap-4 sm:gap-5'>
+						{packagesData.map(renderInfoCard)}
 					</div>
+				</section>
 
-					<div>
-						<h2 className='text-3xl font-semibold mb-8'>Packages</h2>
-						<div className='grid gap-6 sm:grid-cols-3'>
-							<article className='rounded-3xl border border-stone-200 bg-white/90 p-6 sm:p-8 shadow-sm flex flex-col h-full'>
-								<h3 className='text-xl font-semibold mb-3'>
-									Social Media Marketing
-								</h3>
-								<p className='text-base opacity-80 leading-relaxed'>
-									Campaign creation, channel optimization, and ads strategy to
-									help your brand grow visibility and conversions.
-								</p>
-							</article>
-							<article className='rounded-3xl border border-stone-200 bg-white/90 p-6 sm:p-8 shadow-sm flex flex-col h-full'>
-								<h3 className='text-xl font-semibold mb-3'>
-									Social Media Management
-								</h3>
-								<p className='text-base opacity-80 leading-relaxed'>
-									Content scheduling, community engagement, and performance
-									reporting for consistent, polished social channels.
-								</p>
-							</article>
-							<article className='rounded-3xl border border-stone-200 bg-white/90 p-6 sm:p-8 shadow-sm flex flex-col h-full'>
-								<h3 className='text-xl font-semibold mb-3'>
-									Additional Services
-								</h3>
-								<p className='text-base opacity-80 leading-relaxed'>
-									Brand workshops, creative consulting, and integrated marketing
-									systems tailored to your growth goals.
-								</p>
-							</article>
-						</div>
+				<section>
+					<h2 className='mb-8 text-3xl font-semibold'>Skills & Tools</h2>
+					<div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-4'>
+						{skillTools.map((tool) => {
+							const IconComponent = tool.icon;
+							return (
+								<div
+									key={tool.name}
+									className='group flex h-full transform cursor-pointer flex-col rounded-xl border border-stone-200 bg-white/90 p-7 shadow-sm transition-all duration-200 ease-out hover:-translate-y-2 hover:scale-105 hover:border-primary/40 hover:bg-white hover:shadow-lg'
+								>
+									<div className='mb-4 flex items-center gap-4'>
+										<div className='flex items-center justify-center rounded-xl bg-stone-100 p-3 transition-all duration-200 group-hover:scale-110 group-hover:bg-primary/10'>
+											<IconComponent className={`h-7 w-7 ${tool.color}`} />
+										</div>
+										<h3 className='text-xl font-bold'>{tool.name}</h3>
+									</div>
+									<p className='text-lg leading-relaxed opacity-80'>
+										{tool.description}
+									</p>
+								</div>
+							);
+						})}
 					</div>
 				</section>
 			</div>
