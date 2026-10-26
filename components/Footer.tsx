@@ -36,8 +36,8 @@ const Footer = () => {
 						</Link>
 
 						<p className='max-w-sm text-base font-light leading-relaxed tracking-wide text-white/80 md:text-lg'>
-							Digital marketing solutions for small businesses, non-profits &
-							organizations based in Wilmington, NC
+							Helping small businesses make waves online through storytelling,
+							strategy, and authentic connection.
 						</p>
 					</div>
 
@@ -124,7 +124,7 @@ const Footer = () => {
 						© 2026 Seabreeze Strategies. All rights reserved.
 					</p>
 					<p className='text-sm font-bolder font-light uppercase tracking-widest opacity-80'>
-						Crafting digital success, one wave at a time.
+						Helping small businesses make waves online.
 					</p>
 				</div>
 			</div>

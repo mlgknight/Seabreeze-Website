@@ -105,18 +105,16 @@ export default function Home() {
                             </p>
 
                             <h2 className='text-5xl md:text-7xl font-oldstandard leading-[1.1] mb-10 tracking-tighter'>
-                                Elevating your brand <br />
-                                <span className='italic font-light'>through intentional</span>
-                                <br />
-                                storytelling.
+                                Helping small businesses <br />
+                                <span className='italic font-light'>make waves online.</span>
                             </h2>
 
                             <div className='h-px w-20 bg-border mb-10' />
 
-                            <p className='text-base text-muted-foreground leading-relaxed max-w-md font-light uppercase tracking-wider'>
-                                At Seabreeze Strategies, we don’t just post content. We build
-                                digital presences that feel as refreshing and effortless as a
-                                coastal breeze. Boutique, bespoke, and results-driven.
+                            <p className='text-base text-muted-foreground leading-relaxed max-w-md font-light'>
+                                I help small businesses grow through creative storytelling,
+                                intentional strategy, and authentic connection—turning
+                                meaningful relationships into lasting growth.
                             </p>
                         </motion.div>
                     </div>
@@ -264,7 +262,7 @@ export default function Home() {
                             </span>
 
                             <h2 className='text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-oldstandard italic tracking-tight text-primary drop-shadow-sm leading-none whitespace-nowrap'>
-                                The Tide Moves With You
+                                Let&apos;s make waves together
                             </h2>
                         </motion.div>
 

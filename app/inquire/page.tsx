@@ -6,14 +6,28 @@ import Footer from '@/components/Footer';
 
 const initialForm = {
 	name: '',
+	businessName: '',
 	email: '',
-	service: 'Brand Strategy & Launch',
-	message: '',
+	links: '',
+	services: [] as string[],
+	overview: '',
+	goal: '',
+	budget: '',
 	website: '', // honeypot: real users never fill this in
 };
 
+const serviceOptions = [
+	'Social media management',
+	'Content creation',
+	'Brand strategy',
+	'Content planning and coaching',
+	'Event marketing',
+	'Not sure yet',
+];
+
 export default function ContactPage() {
 	const [status, setStatus] = useState('idle');
+	const [confirmationSent, setConfirmationSent] = useState(false);
 	const [formData, setFormData] = useState(initialForm);
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -27,6 +41,8 @@ export default function ContactPage() {
 				body: JSON.stringify(formData),
 			});
 			if (!res.ok) throw new Error('Request failed');
+			const result: { confirmationSent?: boolean } = await res.json();
+			setConfirmationSent(result.confirmationSent === true);
 			setStatus('submitted');
 		} catch (error) {
 			console.error(error);
@@ -41,6 +57,15 @@ export default function ContactPage() {
 	) => {
 		const { name, value } = e.target;
 		setFormData((prev) => ({ ...prev, [name]: value }));
+	};
+
+	const handleServiceChange = (service: string) => {
+		setFormData((prev) => ({
+			...prev,
+			services: prev.services.includes(service)
+				? prev.services.filter((item) => item !== service)
+				: [...prev.services, service],
+		}));
 	};
 
 	return (
@@ -63,12 +88,18 @@ export default function ContactPage() {
 									We&apos;ve received your project details and will be in touch
 									within 24–48 hours.
 								</p>
+								<p className='text-muted-foreground font-light text-sm max-w-md mx-auto'>
+									{confirmationSent
+										? 'A confirmation email is on its way to your inbox.'
+										: 'Your inquiry was received, but we could not send a confirmation email. We’ll follow up with you soon.'}
+								</p>
 								<button
 									onClick={() => {
 										setStatus('idle');
+										setConfirmationSent(false);
 										setFormData(initialForm);
 									}}
-									className='mt-4 text-xs font-mono uppercase tracking-widest text-muted-foreground underline hover:text-foreground transition-colors'
+									className=' cursor-pointer mt-4 text-xs font-mono uppercase tracking-widest text-muted-foreground underline hover:text-foreground transition-colors'
 								>
 									Send another message
 								</button>
@@ -76,11 +107,18 @@ export default function ContactPage() {
 						) : (
 							<>
 								<h2 className='text-4xl md:text-5xl lg:text-6xl font-oldstandard font-semibold mb-3'>
-									Project Details
+									Your next chapter starts here.
 								</h2>
-								<p className='text-base md:text-lg text-muted-foreground font-light mb-10 max-w-2xl'>
-									Fill out the form below and we’ll reach out with recommended
-									next steps.
+								<p className='text-base md:text-lg text-muted-foreground font-light mb-10 max-w-3xl leading-relaxed'>
+									Have a business you love and a story you&apos;re ready to
+									share? I&apos;d love to hear about it! Whether you&apos;re
+									looking for a little extra help with social media, need fresh
+									creative content, or are ready for a more intentional
+									marketing strategy, I&apos;m here to help you make your next
+									move with confidence. Tell me a little about your business,
+									your goals, and where you&apos;d love to go. Fill out the
+									inquiry form below, and let&apos;s see how we can make some
+									waves together!
 								</p>
 
 								<form onSubmit={handleSubmit} className='space-y-8'>
@@ -118,6 +156,24 @@ export default function ContactPage() {
 
 										<div>
 											<label
+												htmlFor='businessName'
+												className='block text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-1'
+											>
+												Business Name
+											</label>
+											<input
+												id='businessName'
+												type='text'
+												name='businessName'
+												value={formData.businessName}
+												onChange={handleChange}
+												placeholder='Your business'
+												className='w-full px-2 py-2 bg-transparent border-b border-border/80 rounded-none text-base md:text-lg focus:outline-none focus:ring-0 focus:border-foreground transition-all placeholder:text-muted-foreground/50'
+											/>
+										</div>
+
+										<div>
+											<label
 												htmlFor='email'
 												className='block text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-1'
 											>
@@ -138,54 +194,97 @@ export default function ContactPage() {
 
 									<div>
 										<label
-											htmlFor='service'
+											htmlFor='links'
 											className='block text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-1'
 										>
-											What do you need help with?
+											Business website and social media links
 										</label>
-										<div className='relative'>
-											<select
-												id='service'
-												name='service'
-												value={formData.service}
-												onChange={handleChange}
-												className='w-full px-4 py-4 bg-transparent border-b border-border/80 rounded-none text-base md:text-lg focus:outline-none focus:ring-0 focus:border-foreground transition-all appearance-none cursor-pointer pr-12'
-											>
-												<option value='Brand Strategy & Launch'>
-													Brand Strategy & Launch
-												</option>
-												<option value='Content Production & Campaigns'>
-													Content Production & Campaigns
-												</option>
-												<option value='Social Media & Audience Growth'>
-													Social Media & Audience Growth
-												</option>
-												<option value='Other / Full Consultation'>
-													Other / Full Consultation
-												</option>
-											</select>
-											<div className='pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground text-xs'>
-												▼
+										<input
+											id='links'
+											type='text'
+											name='links'
+											value={formData.links}
+											onChange={handleChange}
+											placeholder='Website, Instagram, TikTok, etc.'
+											className='w-full px-2 py-3 bg-transparent border-b border-border/80 rounded-none text-base md:text-lg focus:outline-none focus:ring-0 focus:border-foreground transition-all placeholder:text-muted-foreground/50'
+										/>
+									</div>
+
+									<div>
+										<fieldset>
+											<legend className='block text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3'>
+												What services are you interested in?
+											</legend>
+											<div className='grid gap-3 sm:grid-cols-2'>
+												{serviceOptions.map((service) => (
+													<label
+														key={service}
+														className='flex items-center gap-3 text-base text-foreground'
+													>
+														<input
+															type='checkbox'
+															checked={formData.services.includes(service)}
+															onChange={() => handleServiceChange(service)}
+															className='h-4 w-4 accent-primary'
+														/>
+														{service}
+													</label>
+												))}
 											</div>
-										</div>
+										</fieldset>
 									</div>
 
 									<div>
 										<label
-											htmlFor='message'
+											htmlFor='overview'
 											className='block text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-1'
 										>
-											Project Overview & Goals *
+											Tell me about your business and what you&apos;re looking for
 										</label>
 										<textarea
-											id='message'
-											required
-											rows={5}
-											name='message'
-											value={formData.message}
+											id='overview'
+											rows={4}
+											name='overview'
+											value={formData.overview}
 											onChange={handleChange}
-											placeholder='Tell us about your timeline, current goals, and where you need support...'
-											className='w-full px-2 py-2 bg-transparent border-b border-border/80 rounded-none text-base md:text-lg focus:outline-none focus:ring-0 focus:border-foreground transition-all resize-none placeholder:text-muted-foreground/50'
+											placeholder='Share a little about your business, what you offer, and the support you have in mind...'
+											className='w-full px-2 py-2 bg-transparent border-b border-border/80 rounded-none text-base md:text-lg focus:outline-none focus:ring-0 focus:border-foreground transition-all resize-y placeholder:text-muted-foreground/50'
+										/>
+									</div>
+
+									<div>
+										<label
+											htmlFor='goal'
+											className='block text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-1'
+										>
+											What&apos;s your biggest social media or marketing goal right now?
+										</label>
+										<textarea
+											id='goal'
+											rows={3}
+											name='goal'
+											value={formData.goal}
+											onChange={handleChange}
+											placeholder='Tell me what you would love to accomplish...'
+											className='w-full px-2 py-2 bg-transparent border-b border-border/80 rounded-none text-base md:text-lg focus:outline-none focus:ring-0 focus:border-foreground transition-all resize-y placeholder:text-muted-foreground/50'
+										/>
+									</div>
+
+									<div>
+										<label
+											htmlFor='budget'
+											className='block text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-1'
+										>
+											What&apos;s your approximate monthly marketing budget?
+										</label>
+										<input
+											id='budget'
+											type='text'
+											name='budget'
+											value={formData.budget}
+											onChange={handleChange}
+											placeholder='For example, $750 per month or not sure yet'
+											className='w-full px-2 py-3 bg-transparent border-b border-border/80 rounded-none text-base md:text-lg focus:outline-none focus:ring-0 focus:border-foreground transition-all placeholder:text-muted-foreground/50'
 										/>
 									</div>
 
