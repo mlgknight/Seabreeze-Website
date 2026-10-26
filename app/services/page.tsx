@@ -10,6 +10,13 @@ import {
 } from 'react-icons/si';
 import PageTemplate from '@/components/PageTemplate';
 import Image from 'next/image';
+import { createPageMetadata } from '@/lib/page-metadata';
+
+export const metadata = createPageMetadata(
+	'Social Media Services in Wilmington, NC',
+	'Explore social media management, content creation, brand strategy, and marketing support for small businesses in Wilmington, North Carolina.',
+	'/services',
+);
 
 type ServiceCard = {
     title: string;
@@ -186,9 +193,14 @@ export default function ServicesPage() {
             <div className='space-y-14 sm:space-y-20'>
                 {/* Services Section */}
                 <section>
-                    <h2 className='mb-6 text-center font-serif text-3xl sm:mb-8 sm:text-5xl'>
-                        Our Services
-                    </h2>
+                    <h1 className='mb-4 text-center font-serif text-3xl sm:text-5xl'>
+                        Social Media Services in Wilmington, NC
+                    </h1>
+                    <p className='mx-auto mb-8 max-w-3xl text-center text-base leading-relaxed text-muted-foreground sm:text-lg'>
+                        From social media management and content creation to brand
+                        strategy, Seabreeze Strategies helps Wilmington small businesses
+                        show up online with an intentional, authentic presence.
+                    </p>
                     <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4'>
                         {SERVICES_DATA.map((card) => (
                             <InfoCard

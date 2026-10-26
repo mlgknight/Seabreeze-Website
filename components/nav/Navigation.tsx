@@ -1,26 +1,23 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import {
-    Sheet,
-    SheetContent,
-    SheetTitle,
-    SheetTrigger,
-} from '@/components/ui/sheet';
+import { Menu, X } from 'lucide-react';
 
 const navItems = ['About', 'Services', 'Inquire'];
 
 export default function Navigation() {
     const pathname = usePathname();
-    const [open, setOpen] = useState(false);
 
     return (
-        /* Nav height is strictly controlled by h-16 or h-20 */
+        <>
+        <input
+            id="mobile-menu-toggle"
+            type="checkbox"
+            className="peer/menu-toggle sr-only"
+            aria-label="Toggle navigation menu"
+        />
         <nav className="fixed top-0 left-0 z-50 w-full h-20 md:h-29 bg-[#F9F7F2]/80 backdrop-blur-md border-b border-[#2A2A2A]/5 transition-all duration-300">
             <div className="w-full h-full mx-auto px-6 lg:px-12 flex items-center justify-between">
                 {/* Far Left: Main Logo Wrapper */}
@@ -30,6 +27,7 @@ export default function Navigation() {
                         alt="Seabreeze Logo"
                         width={400}
                         height={200}
+                        sizes="(max-width: 768px) 224px, (max-width: 1024px) 256px, 352px"
                         /* Absolute positioning allows the image to overflow the header without expanding it */
                         className="absolute left-0 top-1/2 -translate-y-1/2 cursor-pointer brightness-1 opacity-90 w-auto h-28 md:h-32 lg:h-44 max-w-none object-contain"
                         priority
@@ -38,45 +36,13 @@ export default function Navigation() {
 
                 {/* Far Right: Mobile Header Toggle */}
                 <div className="md:hidden flex items-center justify-end">
-                    <Sheet open={open} onOpenChange={setOpen}>
-                        <SheetTrigger asChild>
-                            <Button
-                                variant="ghost"
-                                size="icon-lg"
-                                className="hover:bg-transparent -mr-2"
-                                aria-label="Toggle menu"
-                            >
-                                <Menu className="h-6 w-6 stroke-[1.5px]" />
-                            </Button>
-                        </SheetTrigger>
-                        <SheetContent
-                            side="top"
-                            className="w-full h-full bg-[#F9F7F2] border-none pt-24"
-                        >
-                            <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                            <nav className="flex flex-col items-center gap-10">
-                                <Link href="/" aria-label="Home" onClick={() => setOpen(false)}>
-                                    <Image
-                                        src="/Seabreeze_Strategies_Logo/no_background2.png"
-                                        alt="Logo"
-                                        width={100}
-                                        height={100}
-                                        className="grayscale brightness-0 mb-8"
-                                    />
-                                </Link>
-                                {navItems.map((item) => (
-                                    <Link
-                                        key={item}
-                                        href={`/${item.toLowerCase()}`}
-                                        onClick={() => setOpen(false)}
-                                        className="text-3xl uppercase tracking-[0.4em] font-bold font-sans text-stone-600 hover:text-black transition-all"
-                                    >
-                                        {item}
-                                    </Link>
-                                ))}
-                            </nav>
-                        </SheetContent>
-                    </Sheet>
+                    <label
+                        htmlFor="mobile-menu-toggle"
+                        className="relative z-10 -mr-2 flex size-[4.5rem] touch-manipulation items-center justify-center rounded-full border border-[#896447]/15 bg-[#f4ece4]/90 text-[#896447] shadow-[0_4px_16px_rgba(137,100,71,0.12)] transition-colors hover:bg-[#e0c3a4]/50"
+                        aria-label="Open navigation menu"
+                    >
+                        <Menu className="size-8 stroke-[1.5px]" />
+                    </label>
                 </div>
 
                 {/* Far Right: Desktop Nav Links */}
@@ -102,5 +68,47 @@ export default function Navigation() {
                 </div>
             </div>
         </nav>
+
+            <div
+                id="mobile-navigation"
+                className="pointer-events-none fixed inset-0 z-[100] hidden min-h-[100dvh] w-full flex-col items-center bg-[#F9F7F2] px-6 pb-12 pt-[calc(env(safe-area-inset-top)+6rem)] peer-checked/menu-toggle:pointer-events-auto peer-checked/menu-toggle:flex"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Navigation menu"
+            >
+                <label
+                    htmlFor="mobile-menu-toggle"
+                    className="absolute right-6 top-[calc(env(safe-area-inset-top)+1rem)] flex size-14 touch-manipulation items-center justify-center rounded-full border border-[#896447]/15 bg-white/60 text-[#896447] shadow-sm transition-colors hover:bg-[#e0c3a4]/50"
+                    aria-label="Close navigation menu"
+                >
+                    <X className="size-8" />
+                </label>
+                <nav className="flex w-full flex-col items-center gap-8">
+                    <Link
+                        href="/"
+                        aria-label="Home"
+                        className="mb-2"
+                    >
+                        <Image
+                            src="/Seabreeze_Strategies_Logo/no_background2.png"
+                            alt="Seabreeze Strategies"
+                            width={100}
+                            height={100}
+                            className="grayscale brightness-0"
+                        />
+                    </Link>
+                    {navItems.map((item) => (
+                        <Link
+                            key={item}
+                            href={`/${item.toLowerCase()}`}
+                            className="py-2 text-2xl font-bold uppercase tracking-[0.3em] text-[#896447] transition-colors hover:text-[#735739]"
+                            aria-current={pathname === `/${item.toLowerCase()}` ? 'page' : undefined}
+                        >
+                            {item}
+                        </Link>
+                    ))}
+                </nav>
+            </div>
+        </>
     );
 }

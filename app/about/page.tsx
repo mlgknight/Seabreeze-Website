@@ -2,6 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navigation from '@/components/nav/Navigation';
 import Footer from '@/components/Footer';
+import { createPageMetadata } from '@/lib/page-metadata';
+
+export const metadata = createPageMetadata(
+	'About Emma | Social Media Strategist in Wilmington, NC',
+	'Meet Emma, founder of Seabreeze Strategies. Learn how her background in creative writing and social media helps small businesses make waves online.',
+	'/about',
+);
 
 export default function AboutPage() {
 	return (
@@ -9,7 +16,7 @@ export default function AboutPage() {
 			<Navigation />
 
 			{/* HERO WITH BACKGROUND IMAGE */}
-			<div className='relative w-full h-[60vh] md:h-[80vh] lg:h-200 flex items-center justify-center overflow-hidden bg-primary'>
+			<div className='relative flex h-[60vh] min-h-[34rem] w-full items-center justify-center overflow-hidden bg-primary md:h-[80vh] md:min-h-0 lg:h-200'>
 				{/* Background Beach Image */}
 				<Image
 					src='/Wrightville_beach.jpg'
@@ -24,13 +31,14 @@ export default function AboutPage() {
 				<div className='absolute inset-0 bg-primary/40 z-10' />
 
 				{/* Content Container */}
-				<div className='relative z-20 flex flex-col items-center justify-center h-full text-center px-4 max-w-5xl mx-auto'>
-					<h1 className='text-primary-foreground font-oldstandard font-extrabold text-3xl md:text-6xl lg:text-8xl tracking-tight leading-none drop-shadow-xl'>
-						Helping small businesses make waves online
-						<span className='block text-primary-foreground/70 font-light font-oldstandard italic text-base md:text-3xl lg:text-5xl tracking-normal normal-case mt-4'>
-							Your story, shared with purpose
-						</span>
+				<div className='relative z-20 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-4 text-center'>
+					<h1 className='font-oldstandard text-4xl font-extrabold leading-[1.05] tracking-tight text-primary-foreground drop-shadow-xl sm:text-6xl md:text-7xl lg:text-8xl'>
+						<span className='block'>Helping small businesses</span>
+						<span className='block'>make waves online</span>
 					</h1>
+					<p className='mt-5 text-balance font-oldstandard text-base font-light italic tracking-normal text-primary-foreground/80 sm:text-lg md:text-2xl lg:text-3xl'>
+						Your story, shared with purpose
+					</p>
 
 					<div className='w-20 h-0.5 bg-primary-foreground/30 mt-8' />
 				</div>
@@ -155,8 +163,11 @@ export default function AboutPage() {
 					<p className='mb-3 text-[10px] font-semibold uppercase tracking-[0.32em] text-[#896447]/70'>
 						Our mission
 					</p>
-					<h2 className='mb-6 text-3xl text-[#896447] md:text-5xl'>
-						Helping small businesses make waves online.
+					<h2 className='mb-6 text-balance text-3xl font-medium leading-tight tracking-tight text-[#896447] md:text-5xl'>
+						<span className='block'>Helping small businesses</span>
+						<span className='block'>
+							make waves <span className='italic'>online and beyond</span>
+						</span>
 					</h2>
 					<p className='text-base leading-relaxed text-[#896447]/80 md:text-lg'>
 						At Seabreeze Strategies, my mission is to help small businesses grow
@@ -172,9 +183,7 @@ export default function AboutPage() {
 			{/* VALUES */}
 			<section className='mx-auto max-w-6xl px-6 py-14 md:py-20'>
 				<div className='mb-12 text-center'>
-					<h2 className='text-4xl text-[#896447] md:text-5xl'>
-						Our Pillars
-					</h2>
+					<h2 className='text-4xl text-[#896447] md:text-5xl'>Our Pillars</h2>
 				</div>
 
 				<div className='grid gap-10 md:grid-cols-3'>
@@ -183,7 +192,7 @@ export default function AboutPage() {
 						<p className='mb-4 text-base italic text-[#896447]/80'>
 							Your story, your voice, your brand.
 						</p>
-						<p className='text-base leading-relaxed text-[#896447]/80'>
+						<p className='text-base leading-relaxed text-[#896447]/80 md:h-56'>
 							I believe the best marketing doesn&apos;t try to make a business
 							into something it&apos;s not. It&apos;s about highlighting what
 							makes each brand special and creating an online presence that
@@ -210,7 +219,7 @@ export default function AboutPage() {
 						<p className='mb-4 text-base italic text-[#896447]/80'>
 							Fresh ideas with a thoughtful purpose.
 						</p>
-						<p className='text-base leading-relaxed text-[#896447]/80'>
+						<p className='text-base leading-relaxed text-[#896447]/80 md:h-56'>
 							Creativity is at the heart of everything I do. From eye-catching
 							visuals to compelling captions, I love finding fresh ways to tell
 							stories, capture attention, and make each brand stand out online.
@@ -230,7 +239,7 @@ export default function AboutPage() {
 						<p className='mb-4 text-base italic text-[#896447]/80'>
 							People first, always.
 						</p>
-						<p className='text-base leading-relaxed text-[#896447]/80'>
+						<p className='text-base leading-relaxed text-[#896447]/80 md:h-56'>
 							Social media is about more than numbers. It&apos;s about building
 							relationships, creating community, and helping businesses connect
 							with the people who believe in what they do. I bring that same
@@ -271,7 +280,7 @@ export default function AboutPage() {
 						<h2 className='text-4xl leading-none text-[#896447] md:text-6xl'>
 							Ready to grow your brand?
 						</h2>
-						<div className='my-6 h-px w-16 bg-[#afccd1]' />
+						<div className='my-6 h-px w-16 self-center bg-[#d9c4a9]' />
 						<p className='max-w-md text-base leading-relaxed text-[#896447]/80 md:text-lg'>
 							Whether you need strategy, content, or a sharper digital presence,
 							I&apos;ll help you turn attention into momentum.

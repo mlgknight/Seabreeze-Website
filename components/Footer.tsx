@@ -22,20 +22,18 @@ const Footer = () => {
 								width={160}
 								height={160}
 								sizes='(max-width: 768px) 56px, 160px'
-								quality={100}
-								className='h-14 w-14 object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.22)] transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_14px_28px_rgba(0,0,0,0.32)] md:h-40 md:w-40'
-								priority
+								className='h-16 w-16 object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.22)] transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_14px_28px_rgba(0,0,0,0.32)] sm:h-20 sm:w-20 md:h-40 md:w-40'
 							/>
-							<span className='text-3xl font-bold leading-none tracking-tight text-white md:text-4xl'>
+							<span className='text-2xl font-bold leading-none tracking-tight text-white sm:text-3xl md:text-4xl'>
 								Seabreeze
 								<br />
-								<span className='text-2xl font-light italic text-white/90 md:text-3xl'>
+								<span className='text-xl font-light italic text-white/90 sm:text-2xl md:text-3xl'>
 									Strategies
 								</span>
 							</span>
 						</Link>
 
-						<p className='max-w-sm text-base font-light leading-relaxed tracking-wide text-white/80 md:text-lg'>
+						<p className='max-w-sm text-sm font-light leading-relaxed tracking-normal text-white/80 sm:text-base md:text-lg md:tracking-wide'>
 							Helping small businesses make waves online through storytelling,
 							strategy, and authentic connection.
 						</p>
@@ -54,7 +52,6 @@ const Footer = () => {
 									{ label: 'About', href: '/about' },
 									{ label: 'Services', href: '/services' },
 									{ label: 'Inquire', href: '/inquire' },
-									{ label: 'FAQ', href: '/faq' },
 								].map(({ label, href }) => (
 									<Link
 										key={label}
@@ -75,14 +72,14 @@ const Footer = () => {
 							<div className='flex flex-col items-center gap-3 text-base sm:items-start'>
 								<a
 									href='mailto:emma.gordon2704@gmail.com'
-									className='w-fit text-base text-white/80 transition-all duration-300 hover:translate-x-1 hover:text-white'
+									className='max-w-full break-all text-sm text-white/80 transition-all duration-300 hover:text-white sm:break-normal sm:text-base sm:hover:translate-x-1'
 								>
 									emma.gordon2704@gmail.com
 								</a>
 
 								<a
 									href='tel:+13213399807'
-									className='w-fit text-base text-white/80 transition-all duration-300 hover:translate-x-1 hover:text-white'
+									className='w-fit text-sm text-white/80 transition-all duration-300 hover:text-white sm:text-base sm:hover:translate-x-1'
 								>
 									(321) 339-9807
 								</a>
@@ -118,12 +115,12 @@ const Footer = () => {
 			</div>
 
 			{/* Bottom Bar */}
-			<div className='w-full bg-secondary px-3 py-4 text-secondary-foreground border-t border-secondary-foreground/10 md:px-6'>
+			<div className='w-full border-t border-secondary-foreground/10 bg-secondary px-4 py-4 text-secondary-foreground sm:px-6'>
 				<div className='mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left'>
-					<p className='text-base font-bolder tracking-wide'>
+					<p className='text-xs font-semibold tracking-wide sm:text-sm'>
 						© 2026 Seabreeze Strategies. All rights reserved.
 					</p>
-					<p className='text-sm font-bolder font-light uppercase tracking-widest opacity-80'>
+					<p className='text-[10px] font-medium uppercase tracking-[0.12em] opacity-80 sm:text-xs sm:tracking-[0.2em] md:text-sm'>
 						Helping small businesses make waves online.
 					</p>
 				</div>

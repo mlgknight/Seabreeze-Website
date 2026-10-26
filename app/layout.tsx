@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Old_Standard_TT } from 'next/font/google';
+import { siteUrl } from '@/lib/site';
 import './globals.css';
 
 const oldStandard = Old_Standard_TT({
@@ -9,13 +10,11 @@ const oldStandard = Old_Standard_TT({
     display: 'swap',
 });
 
-const siteUrl =
-    process.env.NODE_ENV === 'production'
-        ? 'https://seabreezestrategiesnc.com'
-        : 'http://localhost:3000';
-
 export const metadata: Metadata = {
     metadataBase: new URL(siteUrl),
+    alternates: {
+        canonical: '/',
+    },
     title: {
         default: 'Seabreeze Strategies',
         template: '%s | Seabreeze Strategies',
@@ -35,8 +34,8 @@ export const metadata: Metadata = {
             {
                 // Update file extension (.png / .jpg) to match your exact file name inside public/Seabreeze_Strategies_Logo/
                 url: '/Seabreeze_Strategies_Logo/opengraph-image.png',
-                width: 1200,
-                height: 630,
+                width: 500,
+                height: 500,
                 alt: 'Seabreeze Strategies Logo',
             },
         ],

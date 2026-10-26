@@ -78,7 +78,7 @@ export default function PageTemplate({
 			)}
 
 			<main
-				className={`w-full max-w-7xl mx-auto px-8 md:px-10 py-24 ${hideHero ? 'pt-40' : ''}`}
+				className={`mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 md:px-10 md:py-20 ${hideHero ? 'pt-28 md:pt-36' : ''}`}
 			>
 				{children}
 			</main>

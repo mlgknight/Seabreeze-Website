@@ -4,7 +4,30 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
+	const isNativeForm = !req.headers
+		.get('content-type')
+		?.includes('application/json');
+	const redirectToInquiry = (query: string) =>
+		new NextResponse(null, {
+			status: 303,
+			headers: { Location: `/inquire?${query}` },
+		});
+
 	try {
+		const payload = isNativeForm
+			? await req.formData().then((formData) => ({
+					name: formData.get('name'),
+					email: formData.get('email'),
+					businessName: formData.get('businessName'),
+					links: formData.get('links'),
+					services: formData.getAll('services'),
+					overview: formData.get('overview'),
+					goal: formData.get('goal'),
+					budget: formData.get('budget'),
+					website: formData.get('website'),
+				}))
+			: await req.json();
+
 		const {
 			name,
 			email,
@@ -15,10 +38,14 @@ export async function POST(req: Request) {
 			goal,
 			budget,
 			website,
-		} = await req.json();
+		} = payload;
 
 		// Honeypot: bots fill this hidden field, humans don't
-		if (website) return NextResponse.json({ ok: true });
+		if (website) {
+			return isNativeForm
+				? redirectToInquiry('submitted=1')
+				: NextResponse.json({ ok: true });
+		}
 
 		if (
 			typeof name !== 'string' ||
@@ -29,10 +56,14 @@ export async function POST(req: Request) {
 				(!Array.isArray(services) ||
 					!services.every((service: unknown) => typeof service === 'string')))
 		) {
-			return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
+			return isNativeForm
+				? redirectToInquiry('error=1')
+				: NextResponse.json({ error: 'Missing fields' }, { status: 400 });
 		}
 		if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-			return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
+			return isNativeForm
+				? redirectToInquiry('error=1')
+				: NextResponse.json({ error: 'Invalid email' }, { status: 400 });
 		}
 
 		const templateId = process.env.RESEND_CONTACT_TEMPLATE_ID;
@@ -99,9 +130,15 @@ export async function POST(req: Request) {
 			console.error('Failed to send client inquiry confirmation:', confirmationError);
 		}
 
-		return NextResponse.json({ ok: true, confirmationSent });
+		return isNativeForm
+			? redirectToInquiry(
+					`submitted=1&confirmationSent=${confirmationSent ? '1' : '0'}`,
+				)
+			: NextResponse.json({ ok: true, confirmationSent });
 	} catch (err) {
 		console.error(err);
-		return NextResponse.json({ error: 'Server error' }, { status: 500 });
+		return isNativeForm
+			? redirectToInquiry('error=1')
+			: NextResponse.json({ error: 'Server error' }, { status: 500 });
 	}
 }
