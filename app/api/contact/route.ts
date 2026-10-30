@@ -81,7 +81,7 @@ export async function POST(req: Request) {
 
 		const { error } = await resend.emails.send({
 			// Use onboarding@resend.dev until your domain is verified
-			from: 'Website Inquiries <onboarding@resend.dev>',
+			from: 'Website Inquiries <inquiries@seabreezestrategiesnc.com>',
 			to: process.env.CONTACT_TO_EMAIL!,
 			subject: `New inquiry from ${name.trim()}`,
 			replyTo: email,
@@ -110,7 +110,7 @@ export async function POST(req: Request) {
 			const { error: confirmationError } = await resend.emails.send({
 				from:
 					process.env.RESEND_FROM_EMAIL ||
-					'Website Inquiries <onboarding@resend.dev>',
+					'Website Inquiries <inquiries@seabreezestrategiesnc.com>',
 				to: email,
 				replyTo: process.env.CONTACT_TO_EMAIL,
 				template: {
