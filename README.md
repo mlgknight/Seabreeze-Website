@@ -20,6 +20,14 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Contact email configuration on Netlify
+
+Set `RESEND_API_KEY`, `RESEND_CONTACT_TEMPLATE_ID`, and `CONTACT_TO_EMAIL` in the site's Netlify environment variables with the Functions scope for each deploy context that needs email delivery, then redeploy. Keep the API key server-side; do not use a `NEXT_PUBLIC_` prefix or commit it to the repository.
+
+`RESEND_FROM_EMAIL` optionally sets the sender for acknowledgment emails. Verify the sending domain in Resend before using it. The inquiry notification currently uses `onboarding@resend.dev`, which is subject to Resend's test-sender restrictions.
+
+The contact route initializes Resend only when handling a submission, so building the site does not require the API key. Without the key at runtime, JSON submissions receive a 503 error and native form submissions return to `/inquire?error=1`.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

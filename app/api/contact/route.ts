@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
 	const isNativeForm = !req.headers
 		.get('content-type')
@@ -66,6 +64,18 @@ export async function POST(req: Request) {
 				: NextResponse.json({ error: 'Invalid email' }, { status: 400 });
 		}
 
+		const apiKey = process.env.RESEND_API_KEY;
+		if (!apiKey) {
+			console.error('RESEND_API_KEY is not configured');
+			return isNativeForm
+				? redirectToInquiry('error=1')
+				: NextResponse.json(
+						{ error: 'Email service is not configured' },
+						{ status: 503 },
+					);
+		}
+
+		const resend = new Resend(apiKey);
 		const templateId = process.env.RESEND_CONTACT_TEMPLATE_ID;
 		if (!templateId) {
 			console.error('RESEND_CONTACT_TEMPLATE_ID is not configured');
