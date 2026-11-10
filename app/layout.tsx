@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Old_Standard_TT } from 'next/font/google';
 import { siteUrl } from '@/lib/site';
 import './globals.css';
@@ -50,6 +50,11 @@ export const metadata: Metadata = {
     },
 };
 
+export const viewport: Viewport = {
+    viewportFit: 'cover',
+    themeColor: '#afccd1',
+};
+
 export default function RootLayout({
     children,
 }: {
@@ -57,7 +62,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang='en' className={oldStandard.variable}>
-            <body className='antialiased bg-background text-foreground'>
+            <body className='antialiased bg-secondary text-foreground'>
                 {children}
             </body>
         </html>

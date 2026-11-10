@@ -34,8 +34,8 @@ const Footer = () => {
 						</Link>
 
 						<p className='max-w-sm text-sm font-light leading-relaxed tracking-normal text-white/80 sm:text-base md:text-lg md:tracking-wide'>
-							Helping small businesses make waves online through storytelling,
-							strategy, and authentic connection.
+							Digital marketing solutions for small businesses, non-profits, and
+							organizations.
 						</p>
 					</div>
 
@@ -74,7 +74,7 @@ const Footer = () => {
 									href='mailto:emma.gordon2704@gmail.com'
 									className='max-w-full break-all text-sm text-white/80 transition-all duration-300 hover:text-white sm:break-normal sm:text-base sm:hover:translate-x-1'
 								>
-									emma.gordon2704@gmail.com
+									seabreezestrategiesnc@gmail.com
 								</a>
 
 								<a
@@ -102,7 +102,7 @@ const Footer = () => {
 								</a>
 
 								<a
-									href='mailto:emma.gordon2704@gmail.com'
+									href='mailto:seabreezestrategiesnc@gmail.com'
 									aria-label='Email Emma Gordon'
 									className='flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-white/5 text-white/80 transition-all duration-200 hover:border-white/60 hover:bg-white/10 hover:text-white'
 								>
@@ -115,13 +115,10 @@ const Footer = () => {
 			</div>
 
 			{/* Bottom Bar */}
-			<div className='w-full border-t border-secondary-foreground/10 bg-secondary px-4 py-4 text-secondary-foreground sm:px-6'>
+			<div className='w-full border-t border-secondary-foreground/10 bg-secondary px-4 pt-4 pb-[calc(1rem_+_env(safe-area-inset-bottom))] text-secondary-foreground sm:px-6'>
 				<div className='mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left'>
 					<p className='text-xs font-semibold tracking-wide sm:text-sm'>
 						© 2026 Seabreeze Strategies. All rights reserved.
-					</p>
-					<p className='text-[10px] font-medium uppercase tracking-[0.12em] opacity-80 sm:text-xs sm:tracking-[0.2em] md:text-sm'>
-						Helping small businesses make waves online.
 					</p>
 				</div>
 			</div>

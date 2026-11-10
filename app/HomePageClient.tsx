@@ -33,7 +33,7 @@ export default function Home() {
 
     const offerings = [
         {
-            title: 'Social Management',
+            title: 'Social Media Management',
             image: '/updated_photos/IMG_2746.jpeg',
         },
         {
@@ -41,7 +41,7 @@ export default function Home() {
             image: '/updated_photos/IMG_2795.jpeg',
         },
         {
-            title: 'Creative Production',
+            title: 'Content Creation',
             image: '/updated_photos/IMG_2616.jpeg',
         },
     ];
@@ -96,9 +96,6 @@ export default function Home() {
                                 EST. 2026
                             </span>
                         </div>
-                        <h1 className='mt-1 w-full max-w-xl text-balance px-2 text-base font-medium leading-tight tracking-wide text-white drop-shadow-md sm:mt-5 sm:text-lg md:text-xl'>
-                            Social media management for small businesses in Wilmington, NC
-                        </h1>
                     </div>
                 </div>
 
@@ -127,9 +124,7 @@ export default function Home() {
                             <div className='h-px w-20 bg-border mb-10' />
 
                             <p className='text-base text-muted-foreground leading-relaxed max-w-md font-light'>
-                                I help small businesses grow through creative storytelling,
-                                intentional strategy, and authentic connection—turning
-                                meaningful relationships into lasting growth.
+                                Digital marketing solutions for small businesses, non-profits, and organizations.
                             </p>
                         </motion.div>
                     </div>
@@ -167,16 +162,11 @@ export default function Home() {
                     <div className='max-w-7xl mx-auto px-6'>
                         <div className='flex flex-col gap-6 md:flex-row md:justify-between md:items-end mb-10 border-b border-border pb-4'>
                             <div>
-                                <h3 className='text-sm tracking-[0.5em] uppercase text-muted-foreground mb-4'>
-                                    How we collaborate
-                                </h3>
                                 <p className='text-4xl md:text-6xl font-oldstandard italic'>
-                                    The Offerings
+                                    Our Services
                                 </p>
                             </div>
-                            <p className='text-sm font-mono text-muted-foreground'>
-                                3 Ways We Support Your Brand
-                            </p>
+
                         </div>
 
                         {/* Offerings Grid */}
@@ -291,7 +281,7 @@ export default function Home() {
                     </motion.div>
 
                     {/* Content Card */}
-                    <div className='relative z-10 flex w-full max-w-5xl flex-col items-center justify-center gap-6 px-4 text-center sm:px-8'>
+                    <div className='relative z-10 flex w-full max-full flex-col items-center justify-center gap-6 px-4 text-center sm:px-8'>
                         <motion.div
                             initial={{ opacity: 1, y: 12 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -299,12 +289,9 @@ export default function Home() {
                             transition={{ duration: 0.7 }}
                             className='flex w-full flex-col items-center gap-3'
                         >
-                            <span className='text-xs font-mono tracking-[0.35em] uppercase text-muted-foreground'>
-                                Let Us Connect
-                            </span>
 
                             <h2 className='max-w-full text-balance font-oldstandard text-3xl italic leading-tight tracking-tight text-primary drop-shadow-sm sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl'>
-                                Let&apos;s make waves together
+                                Making waves in the digital world.
                             </h2>
                         </motion.div>
 

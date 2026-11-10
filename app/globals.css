@@ -148,9 +148,10 @@
 	}
 	html {
 		font-family: var(--font-oldstandard), serif;
+		background-color: var(--secondary);
 	}
 	body {
-		@apply bg-background text-foreground font-sans;
+		@apply bg-secondary text-foreground font-sans;
 		font-family: var(--font-oldstandard), serif;
 	}
 }

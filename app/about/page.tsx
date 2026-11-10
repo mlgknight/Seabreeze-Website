@@ -12,7 +12,7 @@ export const metadata = createPageMetadata(
 
 export default function AboutPage() {
 	return (
-		<main className='w-full font-oldstandard'>
+		<main className='w-full bg-background font-oldstandard'>
 			<Navigation />
 
 			{/* HERO WITH BACKGROUND IMAGE */}
@@ -36,11 +36,7 @@ export default function AboutPage() {
 						<span className='block'>Helping small businesses</span>
 						<span className='block'>make waves online</span>
 					</h1>
-					<p className='mt-5 text-balance font-oldstandard text-base font-light italic tracking-normal text-primary-foreground/80 sm:text-lg md:text-2xl lg:text-3xl'>
-						Your story, shared with purpose
-					</p>
 
-					<div className='w-20 h-0.5 bg-primary-foreground/30 mt-8' />
 				</div>
 			</div>
 
@@ -48,9 +44,6 @@ export default function AboutPage() {
 			<section className='w-full max-w-7xl mx-auto px-6 py-16 md:py-40 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center'>
 				{/* Founder Text */}
 				<div className='lg:col-span-7 z-10'>
-					<h3 className='text-sm tracking-[0.5em] uppercase text-muted-foreground mb-8'>
-						Hey there!
-					</h3>
 
 					<h2 className='text-5xl md:text-7xl font-oldstandard leading-[1.1] mb-10 tracking-tighter'>
 						Hi, I&apos;m Emma!
@@ -64,14 +57,14 @@ export default function AboutPage() {
 							<span className='font-medium text-foreground'>
 								Seabreeze Strategies
 							</span>
-							, certified beach girl, and your newest social media bestie!
+							, a certified beach girl, and your newest social media bestie!
 						</p>
 
 						<p className='text-base md:text-lg text-muted-foreground leading-relaxed font-light'>
 							I&apos;m a proud UCF graduate with a degree in English and a
 							concentration in Creative Writing (Go Knights!). I grew up between
 							Florida and Hawaii before making my way to Wilmington, NC, in
-							2018, so it&apos;s safe to say that coastal living is a big part
+							2018- so it&apos;s safe to say that coastal living is a big part
 							of who I am!
 						</p>
 
@@ -96,13 +89,13 @@ export default function AboutPage() {
 							Today, I get to combine my love for storytelling, design, and
 							digital marketing to help small businesses show up online in a way
 							that feels authentic to them. I believe social media should be
-							more than just posting pretty pictures—it&apos;s an opportunity to
+							more than just posting pretty pictures- it&apos;s an opportunity to
 							build community, share your story, and help your business grow.
 						</p>
 
 						<p className='text-base md:text-lg text-muted-foreground leading-relaxed font-light'>
 							When I&apos;m not brainstorming content or planning out a social
-							media calendar, you can usually find me running the Wrightsville
+							media calendar, you can find me running the Wrightsville
 							Beach loop, discovering local coffee shops, or dreaming up my next
 							weekend trip.
 						</p>
@@ -147,10 +140,10 @@ export default function AboutPage() {
 					<div className='relative z-10 mx-auto flex h-full max-w-6xl items-center px-6 md:px-10'>
 						<div className='max-w-2xl text-white mr-10'>
 							<p className='mb-4 text-[10px] font-semibold uppercase tracking-[0.38em] text-white/80'>
-								About Seabreeze Strategies
+								At Seabreeze Strategies
 							</p>
 							<h2 className='text-4xl leading-none md:text-6xl lg:text-7xl'>
-								We build brands that feel as good as they look.
+								I build brands that feel as good as they look.
 							</h2>
 						</div>
 					</div>
@@ -161,21 +154,20 @@ export default function AboutPage() {
 			<section className='mx-auto max-w-6xl px-6 py-14 md:py-20'>
 				<div className='mx-auto max-w-4xl border-y border-[#d9c4a9] py-10 text-center md:py-14'>
 					<p className='mb-3 text-[10px] font-semibold uppercase tracking-[0.32em] text-[#896447]/70'>
-						Our mission
+						The mission
 					</p>
 					<h2 className='mb-6 text-balance text-3xl font-medium leading-tight tracking-tight text-[#896447] md:text-5xl'>
 						<span className='block'>Helping small businesses</span>
 						<span className='block'>
-							make waves <span className='italic'>online and beyond</span>
+							make waves <span className='italic'>in the digital world</span>
 						</span>
 					</h2>
 					<p className='text-base leading-relaxed text-[#896447]/80 md:text-lg'>
 						At Seabreeze Strategies, my mission is to help small businesses grow
 						through creative storytelling, intentional strategy, and authentic
 						connection. I believe every business has a story worth sharing, and
-						I&apos;m here to help bring that story to life through thoughtful
-						social media management, engaging content, and personalized
-						marketing that turns meaningful connections into lasting growth.
+						I&apos;m here to help bring that story to life through cohesive branding, engaging content, and personalized
+						marketing that turns community connections into actual leads.
 					</p>
 				</div>
 			</section>
@@ -274,16 +266,13 @@ export default function AboutPage() {
 					</div>
 
 					<div className='flex flex-col justify-center p-8 md:p-12 lg:p-16'>
-						<p className='mb-4 text-[10px] font-semibold uppercase tracking-[0.32em] text-[#896447]/60'>
-							Let&apos;s build your next chapter
-						</p>
 						<h2 className='text-4xl leading-none text-[#896447] md:text-6xl'>
 							Ready to grow your brand?
 						</h2>
 						<div className='my-6 h-px w-16 self-center bg-[#d9c4a9]' />
 						<p className='max-w-md text-base leading-relaxed text-[#896447]/80 md:text-lg'>
-							Whether you need strategy, content, or a sharper digital presence,
-							I&apos;ll help you turn attention into momentum.
+							Whether you need a new strategy, content creation, or a sharper digital presence,
+							I&apos;ll help your business show up authentically online.
 						</p>
 						<div className='mt-8 flex flex-col items-center gap-4'>
 							<Link
@@ -292,9 +281,6 @@ export default function AboutPage() {
 							>
 								Book Now
 							</Link>
-							<span className='text-[10px] font-semibold uppercase tracking-[0.32em] text-[#896447]/60'>
-								Seabreeze Strategies
-							</span>
 						</div>
 					</div>
 				</div>

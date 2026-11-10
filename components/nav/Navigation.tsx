@@ -23,13 +23,13 @@ export default function Navigation() {
                 {/* Far Left: Main Logo Wrapper */}
                 <Link href="/" aria-label="Home" className="relative flex items-center shrink-0 h-full w-48 md:w-64">
                     <Image
-                        src="/Seabreeze_Strategies_Logo/no_background.png"
+                        src="/Seabreeze_Strategies_Logo/logo.png"
                         alt="Seabreeze Logo"
                         width={400}
                         height={200}
                         sizes="(max-width: 768px) 224px, (max-width: 1024px) 256px, 352px"
                         /* Absolute positioning allows the image to overflow the header without expanding it */
-                        className="absolute left-0 top-1/2 -translate-y-1/2 cursor-pointer brightness-1 opacity-90 w-auto h-28 md:h-32 lg:h-44 max-w-none object-contain"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 cursor-pointer w-auto h-28 md:h-32 lg:h-44 max-w-none object-contain"
                         priority
                     />
                 </Link>
@@ -54,10 +54,10 @@ export default function Navigation() {
                             <Link
                                 key={item}
                                 href={href}
-                                className={`text-sm tracking-[0.3em] uppercase font-bold transition-all ${
+                                className={`text-sm tracking-[0.3em] uppercase font-bold transition-all${
                                     isActive
-                                        ? 'underline decoration-primary underline-offset-4 text-black'
-                                        : 'text-stone-600 hover:text-black'
+                                        ? ' decoration-primary underline-offset-4 text-secondary bold'
+                                        : 'text-primary hover:text-primary'
                                 }`}
                                 aria-current={isActive ? 'page' : undefined}
                             >
@@ -90,11 +90,11 @@ export default function Navigation() {
                         className="mb-2"
                     >
                         <Image
-                            src="/Seabreeze_Strategies_Logo/no_background2.png"
+                            src="/Seabreeze_Strategies_Logo/brown_logo.png"
                             alt="Seabreeze Strategies"
                             width={100}
                             height={100}
-                            className="grayscale brightness-0"
+                            className="object-contain"
                         />
                     </Link>
                     {navItems.map((item) => (

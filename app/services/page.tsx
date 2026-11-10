@@ -61,7 +61,7 @@ const SERVICES_DATA: ServiceCard[] = [
     },
     {
         title: 'Event Advertising',
-        image: '/services_photos/service.jpg',
+        image: '/services_photos/beach.webp',
         subtitle: 'For businesses looking to advertise large events:',
         points: [
             'Live event coverage (including photo & video)',
@@ -194,7 +194,7 @@ export default function ServicesPage() {
                 {/* Services Section */}
                 <section>
                     <h1 className='mb-4 text-center font-serif text-3xl sm:text-5xl'>
-                        Social Media Services in Wilmington, NC
+                        Digital Marketing Services in Wilmington, NC
                     </h1>
                     <p className='mx-auto mb-8 max-w-3xl text-center text-base leading-relaxed text-muted-foreground sm:text-lg'>
                         From social media management and content creation to brand
