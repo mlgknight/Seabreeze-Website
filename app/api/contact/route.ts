@@ -75,6 +75,18 @@ export async function POST(req: Request) {
 					);
 		}
 
+		const toEmail = process.env.CONTACT_TO_EMAIL;
+		const fromEmail = process.env.RESEND_FROM_EMAIL || toEmail;
+		if (!toEmail || !fromEmail) {
+			console.error('Contact email addresses are not configured');
+			return isNativeForm
+				? redirectToInquiry('error=1')
+				: NextResponse.json(
+						{ error: 'Email service is not configured' },
+						{ status: 503 },
+					);
+		}
+
 		const resend = new Resend(apiKey);
 		const templateId = process.env.RESEND_CONTACT_TEMPLATE_ID;
 		if (!templateId) {
@@ -90,9 +102,8 @@ export async function POST(req: Request) {
 			: 'Not specified';
 
 		const { error } = await resend.emails.send({
-			// Use onboarding@resend.dev until your domain is verified
-			from: 'Website Inquiries <inquiries@seabreezestrategiesnc.com>',
-			to: process.env.CONTACT_TO_EMAIL!,
+			from: fromEmail,
+			to: toEmail,
 			subject: `New inquiry from ${name.trim()}`,
 			replyTo: email,
 			template: {
@@ -118,11 +129,9 @@ export async function POST(req: Request) {
 		let confirmationSent = false;
 		try {
 			const { error: confirmationError } = await resend.emails.send({
-				from:
-					process.env.RESEND_FROM_EMAIL ||
-					'Website Inquiries <inquiries@seabreezestrategiesnc.com>',
+				from: fromEmail,
 				to: email,
-				replyTo: process.env.CONTACT_TO_EMAIL,
+				replyTo: toEmail,
 				template: {
 					id: 'inquiry-acknowledgment',
 					variables: {
