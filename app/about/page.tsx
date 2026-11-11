@@ -12,11 +12,11 @@ export const metadata = createPageMetadata(
 
 export default function AboutPage() {
 	return (
-		<main className='w-full bg-background font-oldstandard'>
+		<main className='flex min-h-svh w-full flex-col bg-background font-oldstandard'>
 			<Navigation />
 
 			{/* HERO WITH BACKGROUND IMAGE */}
-			<div className='relative flex h-[60vh] min-h-[34rem] w-full items-center justify-center overflow-hidden bg-primary md:h-[80vh] md:min-h-0 lg:h-200'>
+			<div className='relative flex h-[60vh] min-h-136 w-full items-center justify-center overflow-hidden bg-primary md:h-[80vh] md:min-h-0 lg:h-200'>
 				{/* Background Beach Image */}
 				<Image
 					src='/Wrightville_beach.jpg'

@@ -32,7 +32,7 @@ export default function PageTemplate({
 	const heroOverlayClass = heroOverlayClassName ?? 'bg-primary/40';
 
 	return (
-		<div className='bg-background text-foreground'>
+		<div className='flex min-h-svh flex-col bg-background text-foreground'>
 			<Navigation />
 
 			{!hideHero && (
@@ -78,7 +78,7 @@ export default function PageTemplate({
 			)}
 
 			<main
-				className={`mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 md:px-10 md:py-20 ${hideHero ? 'pt-28 md:pt-36' : ''}`}
+				className={`mx-auto w-full max-w-7xl flex-1 px-4 py-14 sm:px-6 md:px-10 md:py-20 ${hideHero ? 'pt-28 md:pt-36' : ''}`}
 			>
 				{children}
 			</main>

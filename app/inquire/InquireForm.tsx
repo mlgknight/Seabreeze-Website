@@ -87,7 +87,7 @@ export default function ContactPage({
 	};
 
 	return (
-		<div className='w-full min-h-screen font-oldstandard bg-background text-foreground flex flex-col justify-between'>
+		<div className='flex min-h-svh w-full flex-col bg-background font-oldstandard text-foreground'>
 			<Navigation />
 
 			<main className='w-full flex-1 px-4 pt-28 pb-14 sm:px-6 md:px-12 md:pt-32 md:pb-20 lg:px-16'>

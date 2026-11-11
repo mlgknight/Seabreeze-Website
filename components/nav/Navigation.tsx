@@ -38,7 +38,7 @@ export default function Navigation() {
                 <div className="md:hidden flex items-center justify-end">
                     <label
                         htmlFor="mobile-menu-toggle"
-                        className="relative z-10 -mr-2 flex size-[4.5rem] touch-manipulation items-center justify-center rounded-full border border-[#896447]/15 bg-[#f4ece4]/90 text-[#896447] shadow-[0_4px_16px_rgba(137,100,71,0.12)] transition-colors hover:bg-[#e0c3a4]/50"
+                        className="relative z-10 -mr-2 flex size-18 touch-manipulation items-center justify-center rounded-full border border-[#896447]/15 bg-[#f4ece4]/90 text-[#896447] shadow-[0_4px_16px_rgba(137,100,71,0.12)] transition-colors hover:bg-[#e0c3a4]/50"
                         aria-label="Open navigation menu"
                     >
                         <Menu className="size-8 stroke-[1.5px]" />
@@ -71,7 +71,7 @@ export default function Navigation() {
 
             <div
                 id="mobile-navigation"
-                className="pointer-events-none fixed inset-0 z-[100] hidden min-h-[100dvh] w-full flex-col items-center bg-[#F9F7F2] px-6 pb-12 pt-[calc(env(safe-area-inset-top)+6rem)] peer-checked/menu-toggle:pointer-events-auto peer-checked/menu-toggle:flex"
+                className="pointer-events-none fixed inset-0 z-100 hidden min-h-dvh w-full flex-col items-center bg-[#F9F7F2] px-6 pb-12 pt-[calc(env(safe-area-inset-top)+6rem)] peer-checked/menu-toggle:pointer-events-auto peer-checked/menu-toggle:flex"
                 role="dialog"
                 aria-modal="true"
                 aria-label="Navigation menu"

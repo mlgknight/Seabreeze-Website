@@ -47,10 +47,10 @@ export default function Home() {
     ];
 
     return (
-        <div className='bg-background text-foreground font-oldstandard min-h-screen selection:bg-primary selection:text-primary-foreground'>
+        <div className='flex min-h-svh flex-col bg-background text-foreground font-oldstandard selection:bg-primary selection:text-primary-foreground'>
             <header>
                 {/* Hero Video Section */}
-                <div className='relative flex h-[52svh] min-h-[25rem] w-full items-center justify-center overflow-hidden bg-primary md:h-[75vh] md:min-h-0 lg:h-[85vh]'>
+                <div className='relative flex h-[52svh] min-h-100 w-full items-center justify-center overflow-hidden bg-primary md:h-[75vh] md:min-h-0 lg:h-[85vh]'>
                     <Image
                         src='/videos/beach2-poster.jpg'
                         alt=''
@@ -65,7 +65,7 @@ export default function Home() {
                         muted
                         loop
                         playsInline
-                        preload='auto'
+                        preload='metadata'
                         poster='/videos/beach2-poster.jpg'
                         className='absolute inset-0 w-full h-full object-cover'
                     >
@@ -85,24 +85,24 @@ export default function Home() {
                             priority
                         />
 
-                        <div className='flex flex-col text-[clamp(2.25rem,11vw,3.5rem)] font-bold leading-none text-primary-foreground drop-shadow-[0_20px_30px_rgba(0,0,0,0.65)] sm:text-6xl md:text-8xl lg:text-[7rem]'>
+                        <h1 className='flex flex-col text-[clamp(2.25rem,11vw,3.5rem)] font-bold leading-none text-primary-foreground drop-shadow-[0_20px_30px_rgba(0,0,0,0.65)] sm:text-6xl md:text-8xl lg:text-[7rem]'>
                             <span className='block tracking-wide md:tracking-wider'>
                                 SEABREEZE
                             </span>
                             <span className='block text-[clamp(2rem,10vw,3.25rem)] sm:text-7xl md:text-[6.5rem] lg:text-[7.5rem]'>
                                 STRATEGIES
                             </span>
-                            <span className='mt-2 text-lg font-light tracking-widest sm:text-2xl md:text-4xl'>
-                                EST. 2026
-                            </span>
-                        </div>
+                        </h1>
+                        <span className='mt-2 text-lg font-light tracking-widest text-primary-foreground drop-shadow-[0_20px_30px_rgba(0,0,0,0.65)] sm:text-2xl md:text-4xl'>
+                            EST. 2026
+                        </span>
                     </div>
                 </div>
 
                 <Navigation />
             </header>
 
-            <main className='flex min-h-screen w-full flex-col items-center bg-background text-foreground overflow-x-hidden'>
+            <main className='flex flex-1 w-full flex-col items-center bg-background text-foreground overflow-x-hidden'>
                 {/* Section 1 */}
                 <section className='grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-5 py-14 sm:px-6 sm:py-20 md:gap-16 md:py-32 lg:grid-cols-12'>
                     <div className='lg:col-span-7 z-10'>
@@ -135,7 +135,7 @@ export default function Home() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true, amount: 0.15 }}
                             transition={{ duration: 0.9 }}
-                            className='relative aspect-[4/5] w-full overflow-hidden shadow-2xl rounded-sm group bg-card'
+                            className='relative aspect-4/5 w-full overflow-hidden shadow-2xl rounded-sm group bg-card'
                         >
                             <div className='absolute inset-4 border border-card-foreground/40 z-10 pointer-events-none group-hover:inset-6 transition-all duration-700' />
 
@@ -205,7 +205,7 @@ export default function Home() {
                     {/* Background Wave - Layer 3 */}
                     <motion.div
                         style={{ y: wave3Y, x: wave3X }}
-                        className='absolute -bottom-16 -left-[10%] w-[120%] h-80 md:h-[28rem] pointer-events-none z-0 opacity-[0.15]'
+                        className='absolute -bottom-16 left-[-10%] w-[120%] h-80 md:h-112 pointer-events-none z-0 opacity-15'
                     >
                         <svg
                             viewBox='0 0 1440 320'
@@ -223,7 +223,7 @@ export default function Home() {
                             x: wave2X,
                             rotate: wave2Rotate,
                         }}
-                        className='absolute -bottom-16 -left-[15%] w-[130%] h-80 md:h-[28rem] lg:h-[30rem] pointer-events-none z-0 opacity-25 origin-bottom'
+                        className='absolute -bottom-16 left-[-15%] w-[130%] h-80 md:h-112 lg:h-120 pointer-events-none z-0 opacity-25 origin-bottom'
                     >
                         <svg
                             viewBox='0 0 1440 320'
@@ -250,7 +250,7 @@ export default function Home() {
 
                     <motion.div
                         style={{ y: wave1MobileY, x: wave1X, scale: wave1Scale }}
-                        className='pointer-events-none absolute -bottom-3 -left-[8%] z-0 h-48 w-[116%] origin-bottom opacity-30 md:hidden'
+                        className='pointer-events-none absolute -bottom-3 left-[-8%] z-0 h-48 w-[116%] origin-bottom opacity-30 md:hidden'
                         aria-hidden='true'
                     >
                         <svg
@@ -269,7 +269,7 @@ export default function Home() {
                             scale: wave1Scale,
                             rotate: wave1Rotate,
                         }}
-                        className='pointer-events-none absolute -bottom-16 -left-[20%] z-0 hidden h-80 w-[140%] origin-bottom opacity-50 md:block md:h-[28rem] lg:h-[32rem]'
+                        className='pointer-events-none absolute -bottom-16 left-[-20%] z-0 hidden h-80 w-[140%] origin-bottom opacity-50 md:block md:h-112 lg:h-128'
                     >
                         <svg
                             viewBox='0 0 1440 320'

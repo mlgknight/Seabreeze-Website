@@ -14,11 +14,18 @@ const structuredData = {
 	'@type': 'ProfessionalService',
 	name: 'Seabreeze Strategies',
 	url: siteUrl,
+	image: `${siteUrl}/Seabreeze_Strategies_Logo/opengraph-image.png`,
+	email: 'seabreezestrategiesnc@gmail.com',
+	telephone: '+13213399807',
 	description:
 		'Social media management, content creation, and marketing strategy for small businesses.',
 	areaServed: {
 		'@type': 'City',
-		name: 'Wilmington, NC',
+		name: 'Wilmington',
+		containedInPlace: {
+			'@type': 'State',
+			name: 'North Carolina',
+		},
 	},
 	serviceType: [
 		'Social media management',

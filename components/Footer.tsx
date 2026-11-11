@@ -1,12 +1,10 @@
-'use client';
-
 import { Instagram, MailIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const Footer = () => {
 	return (
-		<footer className='relative z-20 w-full bg-primary text-white border-t border-white/20 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]'>
+		<footer className='relative z-20 mt-auto w-full bg-primary text-white border-t border-white/20 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]'>
 			{/* Main Footer Container */}
 			<div className='w-full px-4 py-10 sm:px-6 md:px-6 lg:px-8 lg:py-16'>
 				<div className='mx-auto flex max-w-7xl flex-col items-center gap-8 text-center lg:flex-row lg:items-start lg:justify-between lg:text-left'>
@@ -71,7 +69,7 @@ const Footer = () => {
 							</h3>
 							<div className='flex flex-col items-center gap-3 text-base sm:items-start'>
 								<a
-									href='mailto:emma.gordon2704@gmail.com'
+									href='mailto:seabreezestrategiesnc@gmail.com'
 									className='max-w-full break-all text-sm text-white/80 transition-all duration-300 hover:text-white sm:break-normal sm:text-base sm:hover:translate-x-1'
 								>
 									seabreezestrategiesnc@gmail.com
@@ -115,7 +113,7 @@ const Footer = () => {
 			</div>
 
 			{/* Bottom Bar */}
-			<div className='w-full border-t border-secondary-foreground/10 bg-secondary px-4 pt-4 pb-[calc(1rem_+_env(safe-area-inset-bottom))] text-secondary-foreground sm:px-6'>
+			<div className='w-full border-t border-secondary-foreground/10 bg-secondary px-4 pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))] text-secondary-foreground sm:px-6'>
 				<div className='mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left'>
 					<p className='text-xs font-semibold tracking-wide sm:text-sm'>
 						© 2026 Seabreeze Strategies. All rights reserved.

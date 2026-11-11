@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
     viewportFit: 'cover',
-    themeColor: '#afccd1',
+    themeColor: '#896447',
 };
 
 export default function RootLayout({
@@ -62,7 +62,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang='en' className={oldStandard.variable}>
-            <body className='antialiased bg-secondary text-foreground'>
+            <body className='antialiased bg-primary text-foreground'>
                 {children}
             </body>
         </html>
