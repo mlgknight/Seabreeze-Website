@@ -334,7 +334,7 @@ export default function ContactPage({
 											void sendInquiry();
 										}}
 										disabled={status === 'submitting'}
-										className='mx-auto flex min-h-12 w-full max-w-sm touch-manipulation items-center justify-center gap-2 rounded-none bg-primary py-3 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground transition-all hover:opacity-95 active:scale-[0.99] disabled:opacity-50'
+										className='mx-auto cursor-pointer flex min-h-12 w-full max-w-sm touch-manipulation items-center justify-center gap-2 rounded-none bg-primary py-3 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground transition-all hover:opacity-95 active:scale-[0.99] disabled:opacity-50'
 									>
 										{status === 'submitting' ? (
 											<span>Sending...</span>
