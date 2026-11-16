@@ -6,6 +6,7 @@ import Navigation from '@/components/nav/Navigation';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Footer from '../components/Footer';
+import HeroVideo from '@/components/HeroVideo';
 
 export default function Home() {
     const ref = useRef(null);
@@ -60,17 +61,7 @@ export default function Home() {
                         aria-hidden='true'
                         className='object-cover'
                     />
-                    <video
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload='metadata'
-                        poster='/videos/beach2-poster.jpg'
-                        className='absolute inset-0 w-full h-full object-cover'
-                    >
-                        <source src='/videos/beach2.mp4' type='video/mp4' />
-                    </video>
+                    <HeroVideo />
 
                     <div className='absolute inset-0 bg-primary/40' />
 
