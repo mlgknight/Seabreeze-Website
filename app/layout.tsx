@@ -21,9 +21,13 @@ export const metadata: Metadata = {
     },
     description: 'Helping small businesses make waves online through creative storytelling, intentional strategy, and authentic connection.',
     icons: {
-        icon: '/Seabreeze_Strategies_Logo/no_background2.png', // Uses logo for browser tab
-        shortcut: '/Seabreeze_Strategies_Logo/no_background2.png',
-        apple: '/Seabreeze_Strategies_Logo/no_background2.png',
+        icon: {
+            url: '/favicon.png',
+            type: 'image/png',
+            sizes: '512x512',
+        },
+        shortcut: '/favicon.png',
+        apple: '/favicon.png',
     },
     openGraph: {
         title: 'Seabreeze Strategies',
